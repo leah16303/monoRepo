@@ -1,0 +1,35 @@
+
+body {
+    font-family: var(--font-family-body);
+    background-color: var(--color-background-page);
+    font-weight: var(--font-body-regular);
+}
+
+header{
+    font-family: var(--font-family-display);
+    font-weight: var(--font-display-regular);
+    color : var(--bright-red);
+
+    h1{
+    font-weight: var(--font-display-black) ;
+    color : var(--bright-red);
+    background-color: var(--color-background-header);
+    padding: var(--size-spacing-medium);
+    border-radius: var(--size-radius-medium);
+    }
+    
+}
+
+table {
+    background-color: var(--light-pink);
+    font-size: var(--size-type-table-small);
+}
+
+th{
+    font-size: var(--size-type-table-big);
+}
+
+p {
+    color: rgb(28, 25, 25);
+    /* background-color: rgb(242, 223, 238); */
+}
