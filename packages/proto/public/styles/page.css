@@ -33,3 +33,14 @@ p {
     color: rgb(28, 25, 25);
     /* background-color: rgb(242, 223, 238); */
 }
+
+
+svg.icon {
+    display: inline;
+    height: 2em;
+    width: 2em;
+    vertical-align: top;
+    fill: currentColor;
+    color: black;
+  }
+
