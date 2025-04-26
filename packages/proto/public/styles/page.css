@@ -1,4 +1,3 @@
-
 body {
     font-family: var(--font-family-body);
     background-color: var(--color-background-page);
@@ -6,42 +5,36 @@ body {
     margin: 0;
     background: #f9f9f9;
     color: rgb(28, 25, 25);
-    
-}
-
-header{
+  }
+  
+  header {
     font-family: var(--font-family-display);
     font-weight: var(--font-display-regular);
-    color : var(--color-text-heading);
-
-    h1{
-    font-weight: var(--font-display-black) ;
-    color : var(--dark-red);
-    /* background-color: var(--color-background-header); */
+    color: var(--color-text-heading);
+  }
+  
+  header h1 {
+    font-weight: var(--font-display-black);
+    color: var(--dark-red);
     padding: var(--size-spacing-medium);
     border-radius: var(--size-radius-medium);
-    }
-    
-}
-
-table {
+  }
+  
+  table {
     background-color: var(--light-pink);
     font-size: var(--size-type-table-small);
-}
-
-th{
+  }
+  
+  th {
     font-size: var(--size-type-table-big);
-}
-
-p {
-    color : var(--dark-red);
-    
-    /* background-color: rgb(242, 223, 238); */
-}
-
-/* back to planner is header 3 */
-h3 a {
-    left : 10px;
+  }
+  
+  p {
+    color: var(--dark-red);
+  }
+  
+  h3 a {
+    left: 10px;
     font-size: 1rem;
     color: var(--dark-red);
     text-decoration: none;
@@ -50,8 +43,8 @@ h3 a {
   h3 a:hover {
     text-decoration: underline;
   }
-
-svg.icon {
+  
+  svg.icon {
     display: inline;
     height: 2em;
     width: 2em;
@@ -59,7 +52,6 @@ svg.icon {
     fill: currentColor;
     color: black;
   }
-
   
   .app {
     display: grid;
@@ -89,26 +81,49 @@ svg.icon {
     border-radius: 50%;
   }
   
-  /* Grid layout for main content */
+  /* Responsive Page Grid */
   .main-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(12, 1fr);
     gap: 1.5rem;
+    padding: var(--size-padding, 1rem);
+    max-width: 1200px;
+    margin: 0 auto;
   }
   
   .card {
+    grid-column: span 4;
     background: #fff;
     padding: 1.2rem;
     border-radius: 12px;
     box-shadow: 0 2px 6px var(--dark-red);
   }
-
+  
   .card h2 {
     margin-bottom: 0.75rem;
   }
   
+  /* Medium screens (tablet) — 8-column grid */
+  @media (max-width: 900px) {
+    .main-grid {
+      grid-template-columns: repeat(8, 1fr);
+    }
   
-
+    .card {
+      grid-column: span 4;
+    }
+  }
+  
+  /* Small screens (mobile) — 4-column grid */
+  @media (max-width: 600px) {
+    .main-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  
+    .card {
+      grid-column: span 4;
+    }
+  }
   
   .icon {
     width: 20px;
@@ -126,12 +141,10 @@ svg.icon {
     margin-bottom: 0.5rem;
     transition: padding 0.7s ease, border-radius 0.7s ease;
   }
-
+  
   .links a:hover {
-    /* background-color: var(--color-hover); */
-    padding: 0.5rem; 
-    border-radius: 8px;  
-    color: var(--dark-red);  
+    padding: 0.5rem;
+    border-radius: 8px;
+    color: var(--dark-red);
   }
-
   
