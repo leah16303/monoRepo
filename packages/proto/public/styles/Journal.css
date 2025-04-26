@@ -9,6 +9,21 @@ h3 a {
   }
 
 
+   
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-background-header);
+    padding: var(--size-spacing-medium);
+  }
+  
+  h1 {
+    font-family: var(--font-family-display);
+    color: var(--color-text-heading);
+    font-weight: var(--font-display-black);
+  }
+
 .back-to-planner {
     margin: 1rem 0;
     text-align: center;

@@ -39,6 +39,17 @@ p {
     /* background-color: rgb(242, 223, 238); */
 }
 
+/* back to planner is header 3 */
+h3 a {
+    left : 10px;
+    font-size: 1rem;
+    color: var(--dark-red);
+    text-decoration: none;
+  }
+  
+  h3 a:hover {
+    text-decoration: underline;
+  }
 
 svg.icon {
     display: inline;

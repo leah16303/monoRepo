@@ -20,38 +20,43 @@ body {
     color: var(--color-text-heading);
     font-weight: var(--font-display-black);
   }
-  
 
- 
-  .main-content {
-    display: grid;
-    place-items: center;
-    padding: var(--size-spacing-large);
+.page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    font-family: var(--font-body);
   }
   
-  .exercise-table {
+
+  
+  .table-wrapper {
+    overflow-x: auto;
+    margin-top: 2rem;
+  }
+  
+  table {
     width: 100%;
-    max-width: 800px;
     border-collapse: collapse;
-    background-color: white;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    background-color: var(--color-surface);
+    border-radius: var(--size-radius-medium);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
   }
   
-  .exercise-table th,
-  .exercise-table td {
-    padding: 1rem;
+  th, td {
     text-align: left;
-    border: 1px solid #ddd;
+    padding: 1rem;
+    border-bottom: 1px solid var(--color-border);
   }
   
-  .exercise-table th {
-    background-color: var(--color-background-header);
-    color: var(--color-text-heading);
-    font-weight: var(--font-display-bold);
+  thead {
+    background-color: var(--color-secondary-light);
+    color: var(--color-text-on-secondary);
   }
   
-  .exercise-table td {
-    background-color: var(--color-table);
+  tbody tr:hover {
+    background-color: var(--color-hover);
+    transition: background-color 0.3s ease;
   }
-
   
