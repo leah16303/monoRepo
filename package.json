@@ -1,0 +1,17 @@
+{
+  "name": "monorepo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server"
+  },
+  "author": "leah sarles",
+  "license": "ISC",
+  "description": "",
+  "workspaces": [
+    "packages/*"
+  ],
+  "dependencies": {
+    "http-server": "^14.1.1"
+  }
+}
