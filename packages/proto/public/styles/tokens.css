@@ -23,16 +23,18 @@
     --color-background-page: rgb(255, 247, 243);
 
     --color-text: rgb(51 51 51);
-    --color-text-heading: rgb(79, 50, 85);
+    --color-text-heading: rgb(174, 10, 10);
+    --color-hover: rgb(247, 244, 236);
+    --color-table: rgb(250, 219, 225);
 
-    --bright-red :  rgb(155, 33, 157);
+    --dark-red :  rgb(115, 6, 12);
 
 
-    --font-family-body: "Noto Sans", "Fraunces", "Poppins", Cambria,
+    --font-family-body: "Noto Sans", "Fraunces" , Cambria,
     "Noto Serif", "Bitstream Charter", serif;
 
 
-    --font-family-display:"Fraunces",  "Noto Sans", "Fraunces", Calibri, Roboto,
+    --font-family-display:"Fraunces",  "Noto Sans", Calibri, Roboto,
     "Segoe UI", Ubuntu, sans-serif;
 
     

@@ -3,17 +3,21 @@ body {
     font-family: var(--font-family-body);
     background-color: var(--color-background-page);
     font-weight: var(--font-body-regular);
+    margin: 0;
+    background: #f9f9f9;
+    color: rgb(28, 25, 25);
+    
 }
 
 header{
     font-family: var(--font-family-display);
     font-weight: var(--font-display-regular);
-    color : var(--bright-red);
+    color : var(--color-text-heading);
 
     h1{
     font-weight: var(--font-display-black) ;
-    color : var(--bright-red);
-    background-color: var(--color-background-header);
+    color : var(--dark-red);
+    /* background-color: var(--color-background-header); */
     padding: var(--size-spacing-medium);
     border-radius: var(--size-radius-medium);
     }
@@ -30,7 +34,8 @@ th{
 }
 
 p {
-    color: rgb(28, 25, 25);
+    color : var(--dark-red);
+    
     /* background-color: rgb(242, 223, 238); */
 }
 
@@ -44,3 +49,78 @@ svg.icon {
     color: black;
   }
 
+  
+  .app {
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+    gap: 1rem;
+    padding: 1rem 2rem;
+  }
+  
+  /* Flex header layout */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 0.5rem;
+  }
+  
+  .user-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  
+  /* Grid layout for main content */
+  .main-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .card {
+    background: #fff;
+    padding: 1.2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px var(--dark-red);
+  }
+
+  .card h2 {
+    margin-bottom: 0.75rem;
+  }
+  
+  
+
+  
+  .icon {
+    width: 20px;
+    height: 20px;
+    fill: #0077cc;
+  }
+  
+  .links a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: #333;
+    margin-top: 0.75rem;
+    margin-bottom: 0.5rem;
+    transition: padding 0.7s ease, border-radius 0.7s ease;
+  }
+
+  .links a:hover {
+    /* background-color: var(--color-hover); */
+    padding: 0.5rem; 
+    border-radius: 8px;  
+    color: var(--dark-red);  
+  }
+
+  

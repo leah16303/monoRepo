@@ -1,0 +1,36 @@
+h3 a {
+    font-size: 1rem;
+    color: var(--dark-red);
+    text-decoration: none;
+  }
+  
+  h3 a:hover {
+    text-decoration: underline;
+  }
+
+
+.back-to-planner {
+    margin: 1rem 0;
+    text-align: center;
+}
+
+
+.back-link {
+    text-decoration: none;
+    color: var(--color-text-heading);
+    font-weight: var(--font-body-semibold);
+    font-size: var(--size-type-body);
+    padding: 0.5rem;
+    border-radius: var(--size-radius-small);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.back-link:hover {
+    color: var(--color-text-heading-hover);
+    background-color: var(--color-hover-background);
+}
+
+
+.back-link:hover {
+    background-color: var(--light-gray); 
+}
