@@ -6,12 +6,25 @@ body {
     background: #f9f9f9;
     color: rgb(28, 25, 25);
   }
+
   
   header {
     font-family: var(--font-family-display);
     font-weight: var(--font-display-regular);
     color: var(--color-text-heading);
+   
   }
+
+  .header {  
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 0.5rem;
+
+  }
+
+  
   
   header h1 {
     font-weight: var(--font-display-black);
@@ -21,8 +34,12 @@ body {
   }
   
   table {
-    background-color: var(--light-pink);
-    font-size: var(--size-type-table-small);
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--color-table);
+    border-radius: var(--size-radius-medium);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
   }
   
   th {
@@ -43,6 +60,37 @@ body {
   h3 a:hover {
     text-decoration: underline;
   }
+
+
+
+
+.back-to-planner {
+    margin: 1rem 0;
+    text-align: center;
+}
+
+
+.back-link {
+    text-decoration: none;
+    color: var(--color-text-heading);
+    font-weight: var(--font-body-semibold);
+    font-size: var(--size-type-body);
+    padding: 0.5rem;
+    border-radius: var(--size-radius-small);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.back-link:hover {
+    color: var(--color-text-heading-hover);
+    background-color: var(--color-hover-background);
+}
+
+
+.back-link:hover {
+    background-color: var(--light-gray); 
+}
+
+
   
   svg.icon {
     display: inline;
@@ -58,15 +106,6 @@ body {
     grid-template-rows: auto auto 1fr;
     gap: 1rem;
     padding: 1rem 2rem;
-  }
-  
-  /* Flex header layout */
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px solid #ccc;
-    padding-bottom: 0.5rem;
   }
   
   .user-info {
@@ -85,7 +124,7 @@ body {
   .main-grid {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    gap: 1.5rem;
+    gap: 2.5rem;
     padding: var(--size-padding, 1rem);
     max-width: 1200px;
     margin: 0 auto;
@@ -94,19 +133,22 @@ body {
   .card {
     grid-column: span 4;
     background: #fff;
-    padding: 1.2rem;
-    border-radius: 12px;
+    padding: 2.2rem;
+    border-radius: 17px;
     box-shadow: 0 2px 6px var(--dark-red);
   }
   
+
   .card h2 {
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.85rem;
   }
   
   /* Medium screens (tablet) — 8-column grid */
   @media (max-width: 900px) {
     .main-grid {
-      grid-template-columns: repeat(8, 1fr);
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);/* Large screens — 12-column grid */
+      gap: 1rem; /* Optional: adds spacing between cards */
     }
   
     .card {
@@ -139,12 +181,24 @@ body {
     color: #333;
     margin-top: 0.75rem;
     margin-bottom: 0.5rem;
-    transition: padding 0.7s ease, border-radius 0.7s ease;
+    padding: 0.5rem; /* move this here */
+    border-radius: 8px; /* move this here */
+    transition: background-color 0.3s ease, color 0.3s ease, font-size 0.3s ease;
+    box-sizing: border-box; /* important */
   }
+  
   
   .links a:hover {
-    padding: 0.5rem;
-    border-radius: 8px;
+    background-color: #ffeaea; /* optional: light hover bg */
     color: var(--dark-red);
+    font-size: 1.1rem;
+
   }
   
+
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    font-family: var(--font-body);
+  }

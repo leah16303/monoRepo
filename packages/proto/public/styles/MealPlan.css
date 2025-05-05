@@ -1,24 +1,6 @@
- 
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--color-background-header);
-    padding: var(--size-spacing-medium);
-  }
-  
-  h1 {
-    font-family: var(--font-family-display);
-    color: var(--color-text-heading);
-    font-weight: var(--font-display-black);
-  }
 
-.page {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 2rem 1rem;
-    font-family: var(--font-body);
-  }
+
+
   
   .links h3, .links h4 {
     margin-bottom: 0.5rem;
@@ -30,14 +12,7 @@ header {
     margin-top: 2rem;
   }
   
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: var(--color-surface);
-    border-radius: var(--size-radius-medium);
-    overflow: hidden;
-    box-shadow: var(--shadow-sm);
-  }
+
   
   th, td {
     text-align: left;

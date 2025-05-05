@@ -1,17 +1,4 @@
- 
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--color-background-header);
-    padding: var(--size-spacing-medium);
-  }
-  
-  h1 {
-    font-family: var(--font-family-display);
-    color: var(--color-text-heading);
-    font-weight: var(--font-display-black);
-  }
+
 
 .page {
     max-width: 800px;
@@ -39,3 +26,4 @@ header {
     line-height: 1.6;
   }
   
+

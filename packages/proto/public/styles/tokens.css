@@ -25,9 +25,10 @@
     --color-text: rgb(51 51 51);
     --color-text-heading: rgb(174, 10, 10);
     --color-hover: rgb(247, 244, 236);
-    --color-table: rgb(250, 219, 225);
+    --color-table: rgb(252, 246, 240);
 
     --dark-red :  rgb(115, 6, 12);
+    --dark-black-text :  rgb(19, 18, 18);
 
 
     --font-family-body: "Noto Sans", "Fraunces" , Cambria,

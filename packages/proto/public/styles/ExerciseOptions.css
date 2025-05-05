@@ -1,28 +1,4 @@
-body {
-    font-family: var(--font-family-body);
-    background-color: var(--color-background-page);
-    font-weight: var(--font-body-regular);
-    margin: 0;
-    background: #f9f9f9;
-    color: rgb(28, 25, 25);
-  }
-  
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--color-background-header);
-    padding: var(--size-spacing-medium);
-  }
-  
-  h1 {
-    font-family: var(--font-family-display);
-    color: var(--color-text-heading);
-    font-weight: var(--font-display-black);
-  }
-  
 
- 
   .main-content {
     display: grid;
     place-items: center;
