@@ -3,35 +3,50 @@ body {
     background-color: var(--color-background-page);
     font-weight: var(--font-body-regular);
     margin: 0;
-    background: #f9f9f9;
-    color: rgb(28, 25, 25);
+    
+    color: var(--color-body-text );
   }
+
+ 
 
   
   header {
     font-family: var(--font-family-display);
     font-weight: var(--font-display-regular);
-    color: var(--color-text-heading);
+    color: var(--color-text);
    
   }
 
-  .header {  
+  .header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
     border-bottom: 2px solid #ccc;
     padding-bottom: 0.5rem;
+  
+  }
+  
+  .header h1 {
+    font-weight: var(--font-display-black);
+    color: var(--title-color);
+    padding: var(--size-spacing-medium);
+    border-radius: var(--size-radius-medium);
+    margin: 0;
+  }
+  
 
+  .title-block {
+    display: flex;
+    flex-direction: column; /* stack title and user-info */
   }
 
   
   
-  header h1 {
+  /* header h1 {
     font-weight: var(--font-display-black);
     color: var(--dark-red);
     padding: var(--size-spacing-medium);
     border-radius: var(--size-radius-medium);
-  }
+  } */
   
   table {
     width: 100%;
@@ -47,7 +62,7 @@ body {
   }
   
   p {
-    color: var(--dark-red);
+    color: var(--color-text);
   }
   
   h3 a {
@@ -62,7 +77,12 @@ body {
   }
 
 
-
+  .header-bottom-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+  }
 
 .back-to-planner {
     margin: 1rem 0;
@@ -98,7 +118,8 @@ body {
     width: 2em;
     vertical-align: top;
     fill: currentColor;
-    color: black;
+    /* color: var(--color-body-text);
+    font-weight : 2; */
   }
   
   .app {
@@ -114,6 +135,13 @@ body {
     gap: 0.5rem;
   }
   
+  .dark-mode-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color : var(--dark-red);
+  }
+
   .avatar {
     width: 40px;
     height: 40px;
@@ -132,10 +160,11 @@ body {
   
   .card {
     grid-column: span 4;
-    background: #fff;
+    background-color: var(--color-card);
     padding: 2.2rem;
     border-radius: 17px;
     box-shadow: 0 2px 6px var(--dark-red);
+    color : var(color-card-text);
   }
   
 
@@ -178,7 +207,7 @@ body {
     align-items: center;
     gap: 0.5rem;
     text-decoration: none;
-    color: #333;
+    color : var(--color-card-text);
     margin-top: 0.75rem;
     margin-bottom: 0.5rem;
     padding: 0.5rem; /* move this here */
@@ -189,8 +218,7 @@ body {
   
   
   .links a:hover {
-    background-color: #ffeaea; /* optional: light hover bg */
-    color: var(--dark-red);
+    color: var(--color-text);
     font-size: 1.1rem;
 
   }
