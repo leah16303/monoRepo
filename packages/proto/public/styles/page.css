@@ -118,8 +118,19 @@ body {
     width: 2em;
     vertical-align: top;
     fill: currentColor;
+    font-size: 1.5rem;
     /* color: var(--color-body-text);
     font-weight : 2; */
+  }
+
+  svg.profile-icon {
+    display: inline;
+    height: 2em;
+    width: 2em;
+    vertical-align: top;
+    fill: currentColor;
+    font-size: 1rem;
+    color: var(--dark-red);
   }
   
   .app {
