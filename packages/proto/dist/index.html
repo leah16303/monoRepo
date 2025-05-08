@@ -1,0 +1,113 @@
+
+
+
+<!DOCTYPE html>
+
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="/styles/page.css" />
+        <link rel="stylesheet" href="/styles/tokens.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+        <?xml version="1.0" encoding="UTF-8"?>
+      <script type="module" crossorigin src="/assets/index-CtuWjRkd.js"></script>
+    </head>
+    
+      <body>
+        <div class="app">
+      
+         
+          <header class="header">
+            <h1>Health Planner</h1>
+          
+            <div class="header-bottom-row">
+              <div class="user-info">
+                <p>LSarles</p>
+                <svg class="profile-icon"><use href="/icons/all.svg#empty-profile" /></svg>
+                <!-- <img src="/images/profilePhoto.webp" alt="User Avatar" class="avatar"> -->
+              </div>
+          
+              <label class="dark-mode-toggle">
+                <input type="checkbox" id="dark-mode-toggle" autocomplete="off" />
+                <p>Dark mode</p>
+                
+              </label>
+            </div>
+          </header>
+          
+          
+
+          
+      
+          <div class="page-title">
+            <p>Welcome back Leah</p>
+            <h3>April 21st - 25th</h3>
+          </div>
+      
+          <!-- Grid of Cards -->
+          <main class="main-grid">
+      
+          
+            <health-planner-card category="Food">
+              <a slot="link-1" class="card-link" href="MealPlan.html">
+                <svg class="icon"><use href="/icons/food.svg#mealplan" /></svg>
+                Meal Plan
+              </a>
+              <a slot="link-2" class="card-link" href="Recipes.html">
+                <svg class="icon"><use href="/icons/food.svg#pot" /></svg>
+                Recipes
+              </a>
+
+            </health-planner-card>
+
+
+            <health-planner-card category="Fitness">
+              <a slot="link-1" class="card-link" href="WorkoutCalendar.html">
+                <svg class="icon"><use href="/icons/fitness.svg#calendar" /></svg>
+                Workout Calendar
+              </a>
+              <a slot="link-2" class="card-link" href="ExerciseOptions.html">
+                <svg class="icon"><use href="/icons/fitness.svg#weight" /></svg>
+                Exercise Options
+              </a>
+            </health-planner-card>
+
+           
+      
+            <health-planner-card category="Mental Health">
+              <a slot="link-1" class="card-link" href="Journal.html">
+                <svg class="icon"><use href="/icons/mental-health.svg#journal" /></svg>
+                Journaling
+              </a>
+              
+            </health-planner-card>
+      
+      
+          </main>
+      
+        </div>
+
+
+        <script>
+          document.body.addEventListener("change", function (event) {
+            if (event.target.id === "dark-mode-toggle") {
+              if (event.target.checked) {
+                event.currentTarget.classList.add("dark-mode");
+              } else {
+                event.currentTarget.classList.remove("dark-mode");
+              }
+            }
+          });
+        </script>
+
+      </body>
+ </html>

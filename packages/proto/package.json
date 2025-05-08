@@ -5,9 +5,18 @@
   "license": "ISC",
   "author": "",
   "type": "commonjs",
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
-     "start": "http-server -p 3000"
+    "start": "http-server dist -p 3000",
+    "dev": "npx vite",
+    "build": "npx tsc && npx vite build"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5"
+  },
+  "dependencies": {
+    "@calpoly/mustang": "^1.0.15",
+    "lit": "^3.3.0"
   }
-
 }

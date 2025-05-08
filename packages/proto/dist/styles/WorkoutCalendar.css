@@ -1,0 +1,32 @@
+
+  
+  .table-wrapper {
+    overflow-x: auto;
+    margin-top: 2rem;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--color-surface);
+    border-radius: var(--size-radius-medium);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+  }
+  
+  th, td {
+    text-align: left;
+    padding: 1rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+  
+  thead {
+    background-color: var(--color-secondary-light);
+    color: var(--color-text-on-secondary);
+  }
+  
+  tbody tr:hover {
+    background-color: var(--color-hover);
+    transition: background-color 0.3s ease;
+  }
+  
