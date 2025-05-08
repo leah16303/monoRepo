@@ -1,4 +1,4 @@
-// src/health-planner-card.ts
+
 import { html, css, LitElement } from "lit";
 import { property } from "lit/decorators.js";
 import reset from "./styles/reset.css.ts";

@@ -18,9 +18,14 @@
   </header>
 
   <main class="page">
+    
+    
+      
+  
+    <workout-schedule-wrapper src="/data/workouts.json"></workout-schedule-wrapper>
 
 
-    <div class="table-wrapper">
+    <!-- <div class="table-wrapper">
       <table>
         <thead>
           <tr>
@@ -39,8 +44,25 @@
           <tr><td>Saturday</td><td>Rest</td><td>0 mins</td></tr>
         </tbody>
       </table>
-    </div>
+    </div> -->
   </main>
+  
 </div>
+
+
+
+
+<script type="module">
+  import { define } from "@calpoly/mustang";
+  import { WorkoutScheduleElement } from "/src/workout-row.js";
+  import { WorkoutScheduleWrapper } from "/src/schedule-wrapper.js";
+
+  define({
+    "workout-schedule": WorkoutScheduleElement,
+    "workout-schedule-wrapper": WorkoutScheduleWrapper
+  });
+</script>
+
+
 </body>
 </html>
