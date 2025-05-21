@@ -4,15 +4,8 @@ import { customElement, property } from "lit/decorators.js";
 @customElement("workout-schedule")
 export class WorkoutScheduleElement extends LitElement {
   @property({ type: Array })
-  data = [
-    { day: "Sunday", activity: "Yoga", duration: "30 mins" },
-    { day: "Monday", activity: "Swimming", duration: "60 mins" },
-    { day: "Tuesday", activity: "Cycling", duration: "40 mins" },
-    { day: "Wednesday", activity: "Running", duration: "45 mins" },
-    { day: "Thursday", activity: "Pilates", duration: "35 mins" },
-    { day: "Friday", activity: "HIIT", duration: "25 mins" },
-    { day: "Saturday", activity: "Rest", duration: "0 mins" },
-  ];
+  data: Array<{ day: string; activity: string; duration: string }> = [];
+
 
 
   render() {

@@ -31,6 +31,7 @@ export class WorkoutScheduleWrapper extends LitElement {
       .then((json: object) => {
         if (json) {
           this.entries = json as WorkoutEntry[];
+          console.log("Loaded entries:", this.entries);
         }
       })
       .catch((err) => {
@@ -41,17 +42,7 @@ export class WorkoutScheduleWrapper extends LitElement {
 
   render() {
     return html`
-      <workout-schedule>
-        ${this.entries.map(
-          (entry) => html`
-            <table-entry
-              day=${entry.day}
-              activity=${entry.activity}
-              duration=${entry.duration}
-            ></table-entry>
-          `
-        )}
-      </workout-schedule>
+      <workout-schedule .data=${this.entries}></workout-schedule>
     `;
   }
 
