@@ -20,5 +20,5 @@
       "noUnusedParameters": true,
       "noFallthroughCasesInSwitch": true
     },
-    "include": ["src", "src/workout-row.ts"]
+    "include": ["src", "src/workout-schedule.ts"]
   }

@@ -1,12 +1,45 @@
 import { LitElement, html, css } from "lit";
 import { customElement, property } from "lit/decorators.js";
 
+interface WorkoutEntry {
+  day: string;
+  activity: string;
+  duration: string;
+}
+
 @customElement("workout-schedule")
 export class WorkoutScheduleElement extends LitElement {
   @property({ type: Array })
-  data: Array<{ day: string; activity: string; duration: string }> = [];
+  private entries: WorkoutEntry[]= [];
 
 
+  @property()
+  src?: string;
+
+  connectedCallback() {
+    super.connectedCallback();
+    if (this.src) this.hydrate(this.src);
+  }
+
+   
+  hydrate(src: string) {
+    fetch(src)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Failed to fetch");
+        }
+        return res.json();
+      })
+      .then((json: object) => {
+        if (json) {
+          this.entries = json as WorkoutEntry[];
+          console.log("Loaded entries:", this.entries);
+        }
+      })
+      .catch((err) => {
+        console.error("Error loading JSON data:", err);
+      });
+  }
 
   render() {
     return html`
@@ -20,7 +53,7 @@ export class WorkoutScheduleElement extends LitElement {
             </tr>
           </thead>
           <tbody>
-            ${this.data.map(
+            ${this.entries.map(
               (entry) => html`
                 <tr>
                   <td>${entry.day}</td>

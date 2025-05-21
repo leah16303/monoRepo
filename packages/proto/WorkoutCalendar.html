@@ -19,7 +19,7 @@
 
   <main class="page">
 
-    <workout-schedule-wrapper src="/data/schedule.json"></workout-schedule-wrapper>
+    <workout-schedule src="/data/schedule.json"></workout-schedule>
 
   </main>
   
@@ -30,12 +30,10 @@
 
 <script type="module">
   import { define } from "@calpoly/mustang";
-  import { WorkoutScheduleElement } from "/src/workout-row.js";
-  import { WorkoutScheduleWrapper } from "/src/schedule-wrapper.js";
+  import { WorkoutScheduleElement } from "/src/workout-schedule.js";
 
   define({
     "workout-schedule": WorkoutScheduleElement,
-    "workout-schedule-wrapper": WorkoutScheduleWrapper
   });
 </script>
 
