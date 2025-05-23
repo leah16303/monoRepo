@@ -9,6 +9,9 @@ const app = express();
 const port = process.env.PORT || 3000;
 const staticDir = process.env.STATIC || "public";
 
+// Middleware:
+app.use(express.json());
+
 app.use(express.static(staticDir));
 
 app.get("/hello", (req: Request, res: Response) => {
@@ -21,7 +24,7 @@ app.listen(port, () => {
 
 
 // with the other routes:
-app.get("/workoutentries/:id", (req: Request, res: Response) => {
+app.get("/workoutentries/:userid", (req: Request, res: Response) => {
   const { userid } = req.params;
 
   WorkoutEntry.get(userid).then((data) => {

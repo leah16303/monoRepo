@@ -1,6 +1,6 @@
 // src/services/traveler-svc.ts
 import { Schema, model } from "mongoose";
-import { WorkoutEntry } from "../models/workoutentry";
+import { WorkoutEntry } from "../models/WorkoutEntry";
 
 const WorkoutEntrySchema = new Schema<WorkoutEntry>(
   {
@@ -13,7 +13,7 @@ const WorkoutEntrySchema = new Schema<WorkoutEntry>(
 );
 
 const WorkoutEntryModel = model<WorkoutEntry>(
-  "Profile",
+  "Entry",
   WorkoutEntrySchema
 );
 

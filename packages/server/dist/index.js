@@ -28,6 +28,7 @@ var import_workoutentry_svc = __toESM(require("./services/workoutentry-svc"));
 const app = (0, import_express.default)();
 const port = process.env.PORT || 3e3;
 const staticDir = process.env.STATIC || "public";
+app.use(import_express.default.json());
 app.use(import_express.default.static(staticDir));
 app.get("/hello", (req, res) => {
   res.send("Hello, World");
@@ -35,7 +36,7 @@ app.get("/hello", (req, res) => {
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
-app.get("/workoutentries/:id", (req, res) => {
+app.get("/workoutentries/:userid", (req, res) => {
   const { userid } = req.params;
   import_workoutentry_svc.default.get(userid).then((data) => {
     if (data) res.set("Content-Type", "application/json").send(JSON.stringify(data));

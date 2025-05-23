@@ -32,7 +32,7 @@ const WorkoutEntrySchema = new import_mongoose.Schema(
   { collection: "workoutentries" }
 );
 const WorkoutEntryModel = (0, import_mongoose.model)(
-  "Profile",
+  "Entry",
   WorkoutEntrySchema
 );
 function index() {
