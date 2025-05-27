@@ -2,7 +2,8 @@
 
 *follow this link to access my website url https://lsarles.csse.dev/index.html*
 
-**everything committed  is my work up to lab 8**
+**everything committed  is my work up to lab 11**
 
-I made an initial layout for each page, but very subject to change. 
-Each page has its own css page plus uses pages.css, but I plan to get rid of duplicate code later. 
+My custom Element is the cards on index.html but my lit elements it the workoutEntry
+
+My MongoDb database is for my workoutEntries which I use the mongo given ID and not a userid. 
