@@ -24,11 +24,13 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
 var import_express = __toESM(require("express"));
 var import_mongo = require("./services/mongo");
 var import_workoutentry_svc = __toESM(require("./services/workoutentry-svc"));
+var import_workoutEntries = __toESM(require("./routes/workoutEntries"));
 (0, import_mongo.connect)("healthdb");
 const app = (0, import_express.default)();
 const port = process.env.PORT || 3e3;
 const staticDir = process.env.STATIC || "public";
 app.use(import_express.default.json());
+app.use("/api/workoutEntries", import_workoutEntries.default);
 app.use(import_express.default.static(staticDir));
 app.get("/hello", (req, res) => {
   res.send("Hello, World");
@@ -36,10 +38,22 @@ app.get("/hello", (req, res) => {
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
-app.get("/workoutentries/:userid", (req, res) => {
+app.get("/workoutEntries/:id", (req, res) => {
   const { userid } = req.params;
   import_workoutentry_svc.default.get(userid).then((data) => {
     if (data) res.set("Content-Type", "application/json").send(JSON.stringify(data));
     else res.status(404).send();
+  });
+});
+app.get("/workoutEntries/id/:id", (req, res) => {
+  const { id } = req.params;
+  import_workoutentry_svc.default.getById(id).then((entry) => {
+    if (entry) {
+      res.set("Content-Type", "application/json").send(JSON.stringify(entry));
+    } else {
+      res.status(404).send("Entry not found");
+    }
+  }).catch((err) => {
+    res.status(500).send(`Error: ${err}`);
   });
 });

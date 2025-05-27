@@ -1,8 +1,8 @@
 
-
+import mongoose from 'mongoose';
 export interface WorkoutEntry {
-    userid: String;
-    day: Date;
-    activity:String;
-    duration: String;
+  userid: mongoose.Types.ObjectId;
+  day: string;
+  activity: string;
+  duration: string;
 }
