@@ -1,7 +1,6 @@
 // src/routes/travelers.ts
 import express, { Request, Response } from "express";
 import { WorkoutEntry } from "../models/WorkoutEntry";
-
 import WorkoutEntries from "../services/workoutentry-svc";
 
 const router = express.Router();
@@ -14,10 +13,6 @@ router.get("/", (_, res: Response) => {
 });
 
 
-/**
- * GET /api/workoutEntries/:id
- * Get a workout entry by MongoDB _id
- */
 router.get("/:id", (req: Request, res: Response) => {
   const { id } = req.params;
 
@@ -42,7 +37,6 @@ router.post("/", (req: Request, res: Response) => {
 });
 
 /**
- * PUT /api/workoutEntries/:id
  * Update an existing workout entry by _id
  */
 router.put("/:id", (req: Request, res: Response) => {
@@ -55,7 +49,6 @@ router.put("/:id", (req: Request, res: Response) => {
 });
 
 /**
- * DELETE /api/workoutEntries/:id
  * Delete a workout entry by _id
  */
 router.delete("/:id", (req: Request, res: Response) => {

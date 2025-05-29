@@ -26,7 +26,7 @@ const PersonSchema = new import_mongoose.Schema(
   {
     userid: { type: String, required: true, unique: true },
     name: { type: String, required: true, unique: true },
-    profilephot: { type: URL, required: false, unique: true },
+    profilephoto: { type: String, required: false, unique: true },
     recipes: { type: String, required: false, unique: true },
     workouts: [String],
     exerciseOptins: [String]
@@ -45,4 +45,23 @@ function get(userid) {
     throw `${userid} Not Found`;
   });
 }
-var person_svc_default = { index, get };
+function create(json) {
+  const t = new PersonModel(json);
+  return t.save();
+}
+function update(userid, traveler) {
+  return PersonModel.findOneAndUpdate({ userid }, traveler, {
+    new: true
+  }).then((updated) => {
+    if (!updated) throw `${userid} not updated`;
+    else return updated;
+  });
+}
+function remove(userid) {
+  return PersonModel.findOneAndDelete({ userid }).then(
+    (deleted) => {
+      if (!deleted) throw `${userid} not deleted`;
+    }
+  );
+}
+var person_svc_default = { index, get, create, update, remove };
