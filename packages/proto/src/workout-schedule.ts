@@ -41,6 +41,10 @@ export class WorkoutScheduleElement extends LitElement {
       });
   }
 
+  
+
+
+
   render() {
     return html`
       <div class="main-content">

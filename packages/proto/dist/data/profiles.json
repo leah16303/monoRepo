@@ -1,0 +1,42 @@
+[
+  {
+    "userid": "user_001",
+    "name": "alice_smith",
+    "profilephot": "https://example.com/photos/alice.jpg",
+    "recipes": "vegan_bowls_collection",
+    "workouts": ["yoga", "pilates", "stretching"],
+    "exerciseOptins": ["morning", "evening"]
+  },
+  {
+    "userid": "user_002",
+    "name": "john_doe",
+    "profilephot": "https://example.com/photos/john.jpg",
+    "recipes": "high_protein_meals",
+    "workouts": ["weightlifting", "cardio"],
+    "exerciseOptins": ["afternoon"]
+  },
+  {
+    "userid": "user_003",
+    "name": "emma_lee",
+    "profilephot": "https://example.com/photos/emma.jpg",
+    "recipes": "gluten_free_desserts",
+    "workouts": ["running", "cycling", "swimming"],
+    "exerciseOptins": ["morning", "night"]
+  },
+  {
+    "userid": "user_004",
+    "name": "michael_chan",
+    "profilephot": "https://example.com/photos/michael.jpg",
+    "recipes": "asian_fusion_dishes",
+    "workouts": ["crossfit", "boxing"],
+    "exerciseOptins": ["evening"]
+  },
+  {
+    "userid": "user_005",
+    "name": "sophia_khan",
+    "profilephot": "https://example.com/photos/sophia.jpg",
+    "recipes": "mediterranean_diet",
+    "workouts": ["HIIT", "dance", "barre"],
+    "exerciseOptins": ["morning", "afternoon", "evening"]
+  }
+]

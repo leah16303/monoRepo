@@ -25,9 +25,6 @@ app.get("/hello", (req: Request, res: Response) => {
     res.send("Hello, World");
 });
 
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
-});
 
 
 // with the other routes:
@@ -60,3 +57,8 @@ app.listen(port, () => {
 
 
 app.use("/auth", auth);
+
+
+app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}`);
+});

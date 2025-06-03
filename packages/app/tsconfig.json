@@ -20,5 +20,5 @@
       "noUnusedParameters": true,
       "noFallthroughCasesInSwitch": true
     },
-    "include": ["src", "src/workout-schedule.ts", "src/auth/login-form.ts"]
+    "include": ["src", "src/workout-schedule.ts"]
   }

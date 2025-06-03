@@ -10,6 +10,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         workout: resolve(__dirname, 'WorkoutCalendar.html'),
+         login: resolve(__dirname, 'login.html'),
       },
     },
   },

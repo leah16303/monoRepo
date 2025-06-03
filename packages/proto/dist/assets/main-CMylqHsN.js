@@ -1,19 +1,4 @@
-import{i as n,a as l,x as c,n as m,d as p}from"./property-CAEm6_Ia.js";const x=n`
-    * {
-    margin: 0;
-    box-sizing: border-box;
-  }
-  img {
-    max-width: 100%;
-  }
-  ul,
-  menu {
-    display: flex;
-    flex-direction: column;
-    list-style: none;
-    padding: 0;
-  }
-`,g={styles:x};var h=Object.defineProperty,f=(s,t,a,u)=>{for(var r=void 0,e=s.length-1,d;e>=0;e--)(d=s[e])&&(r=d(t,a,r)||r);return r&&h(t,a,r),r};const o=class o extends l{render(){return c`
+import{i as l,x as c,a as m,n as p,d as n,b as h}from"./property-Cal0TkJn.js";import{r as u}from"./reset.css-BQIC0rjc.js";var v=Object.defineProperty,x=(o,t,s,f)=>{for(var r=void 0,e=o.length-1,d;e>=0;e--)(d=o[e])&&(r=d(t,s,r)||r);return r&&v(t,s,r),r};const a=class a extends l{render(){return c`
       <section class="card">
         <h2>${this.category}</h2>
         <div class="links">
@@ -21,7 +6,7 @@ import{i as n,a as l,x as c,n as m,d as p}from"./property-CAEm6_Ia.js";const x=n
           <slot name="link-2"></slot>
         </div>
       </section>
-    `}};o.styles=[g.styles,n`
+    `}};a.styles=[u.styles,m`
       :host {
         display: contents;
       }
@@ -63,4 +48,4 @@ import{i as n,a as l,x as c,n as m,d as p}from"./property-CAEm6_Ia.js";const x=n
           grid-column: span 4;
         }
       }
-    `];let i=o;f([m({type:String})],i.prototype,"category");p({"health-planner-card":i});
+    `];let i=a;x([p({type:String})],i.prototype,"category");n({"mu-auth":h.Provider});HeaderElement.initializeOnce();n({"health-planner-card":i});

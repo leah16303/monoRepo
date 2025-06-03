@@ -17,13 +17,16 @@
         <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
         <?xml version="1.0" encoding="UTF-8"?>
-      <script type="module" crossorigin src="/assets/main-ZBixAVcq.js"></script>
-      <link rel="modulepreload" crossorigin href="/assets/property-CAEm6_Ia.js">
+      <script type="module" crossorigin src="/assets/main-CMylqHsN.js"></script>
+      <link rel="modulepreload" crossorigin href="/assets/property-Cal0TkJn.js">
+      <link rel="modulepreload" crossorigin href="/assets/reset.css-BQIC0rjc.js">
     </head>
     
       <body>
+        <mu-auth provides="profile:auth" redirect="/login.html"> 
         <div class="app">
 
+          <profile-header>
           <header class="header">
             <h1>Health Planner</h1>
           
@@ -41,20 +44,27 @@
               </label>
             </div>
           </header>
+          </profile-header>
           
           
 
           
       
           <div class="page-title">
-            <p>Welcome back Leah</p>
-            <h3>April 21st - 25th</h3>
+
+
+          <a slot="actuator">
+                Welcome Back, ${this.userid || "profile"}
+          </a>
+
+
+            <!-- <p>Welcome back Leah</p>
+            <h3>April 21st - 25th</h3> -->
           </div>
       
           <!-- Grid of Cards -->
           <main class="main-grid">
       
-          
             <health-planner-card category="Food">
               <a slot="link-1" class="card-link" href="MealPlan.html">
                 <svg class="icon"><use href="/icons/food.svg#mealplan" /></svg>
@@ -78,7 +88,6 @@
                 Exercise Options
               </a>
             </health-planner-card>
-
            
       
             <health-planner-card category="Mental Health">
@@ -94,6 +103,7 @@
       
         </div>
 
+        
 
         <script>
           document.body.addEventListener("change", function (event) {
@@ -107,5 +117,7 @@
           });
         </script>
 
+        
+        </mu-auth>
       </body>
  </html>

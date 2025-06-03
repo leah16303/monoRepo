@@ -1,8 +1,8 @@
-import{i as h,n,a as p,x as l,d as b}from"./property-CAEm6_Ia.js";/**
+import{a as h,n,i as p,x as l,d as b}from"./property-Cal0TkJn.js";/**
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
- */const u=t=>(e,o)=>{o!==void 0?o.addInitializer(()=>{customElements.define(t,e)}):customElements.define(t,e)};var f=Object.defineProperty,x=Object.getOwnPropertyDescriptor,c=(t,e,o,s)=>{for(var r=s>1?void 0:s?x(e,o):e,d=t.length-1,i;d>=0;d--)(i=t[d])&&(r=(s?i(e,o,r):i(r))||r);return s&&r&&f(e,o,r),r};let a=class extends p{constructor(){super(...arguments),this.entries=[]}connectedCallback(){super.connectedCallback(),this.src&&this.hydrate(this.src)}hydrate(t){fetch(t).then(e=>{if(!e.ok)throw new Error("Failed to fetch");return e.json()}).then(e=>{e&&(this.entries=e,console.log("Loaded entries:",this.entries))}).catch(e=>{console.error("Error loading JSON data:",e)})}render(){return l`
+ */const u=t=>(e,o)=>{o!==void 0?o.addInitializer(()=>{customElements.define(t,e)}):customElements.define(t,e)};var f=Object.defineProperty,x=Object.getOwnPropertyDescriptor,c=(t,e,o,s)=>{for(var r=s>1?void 0:s?x(e,o):e,i=t.length-1,d;i>=0;i--)(d=t[i])&&(r=(s?d(e,o,r):d(r))||r);return s&&r&&f(e,o,r),r};let a=class extends p{constructor(){super(...arguments),this.entries=[]}connectedCallback(){super.connectedCallback(),this.src&&this.hydrate(this.src)}hydrate(t){fetch(t).then(e=>{if(!e.ok)throw new Error("Failed to fetch");return e.json()}).then(e=>{e&&(this.entries=e,console.log("Loaded entries:",this.entries))}).catch(e=>{console.error("Error loading JSON data:",e)})}render(){return l`
       <div class="main-content">
         <table class="exercise-table">
           <thead>
