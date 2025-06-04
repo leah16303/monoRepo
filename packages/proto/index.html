@@ -22,43 +22,12 @@
       <body>
         <mu-auth provides="profile:auth" redirect="/login.html"> 
         <div class="app">
-
           <profile-header>
-          <header class="header">
-            <h1>Health Planner</h1>
-          
-            <div class="header-bottom-row">
-              <div class="user-info">
-                <p>LSarles</p>
-                <svg class="profile-icon"><use href="/icons/all.svg#empty-profile" /></svg>
-                <!-- <img src="/images/profilePhoto.webp" alt="User Avatar" class="avatar"> -->
-              </div>
-          
-              <label class="dark-mode-toggle">
-                <input type="checkbox" id="dark-mode-toggle" autocomplete="off" />
-                <p>Dark mode</p>
-                
-              </label>
-            </div>
-          </header>
           </profile-header>
-          
-          
-
-          
-      
-          <div class="page-title">
-
-
-          <a slot="actuator">
-                Welcome Back, ${this.userid || "profile"}
-          </a>
-
-
-            <!-- <p>Welcome back Leah</p>
-            <h3>April 21st - 25th</h3> -->
+          <!-- <div class="page-title"> -->
+          <greeting-banner></greeting-banner>
+            
           </div>
-      
           <!-- Grid of Cards -->
           <main class="main-grid">
       
@@ -103,12 +72,14 @@
         <script type="module">
           import { define, Auth } from "@calpoly/mustang";
           import { HealthPlannerCardElement } from "/src/health-planner-card.ts";
-          // import {HeaderElement} from "/src/profile-header.ts";
-          // import { HeaderElement } from "/scripts/header.js";
+          import { HeaderElement } from "/src/header-element.ts";
+          import { GreetingBanner } from "/src/greeting-banner.ts";
 
             define({
-              // "profile-header": HeaderElement,
-              "mu-auth": Auth.Provider
+              "greeting-banner": GreetingBanner,
+               "profile-header": HeaderElement,
+              "mu-auth": Auth.Provider,
+              "health-planner-card": HealthPlannerCardElement
             });
 
             HeaderElement.initializeOnce();
