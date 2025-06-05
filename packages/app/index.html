@@ -3,6 +3,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
+        <link rel="stylesheet" href="/styles/reset.css" />
         <link rel="stylesheet" href="/styles/page.css" />
         <link rel="stylesheet" href="/styles/tokens.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,10 +19,10 @@
     </head>
     
 <body>
-    <mu-history provides="blazing:history">
-      <mu-auth provides="blazing:auth" redirect="/login.html">
+    <mu-history provides="profile:history">
+      <mu-auth provides="profile:auth" redirect="/login.html">
           <article class="page">
-            <blazing-header></blazing-header>
+            <profile-header></profile-header>
             <mu-switch></mu-switch>
           </article>
         </mu-store>

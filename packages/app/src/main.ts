@@ -1,19 +1,24 @@
-import {
-  Auth,
-  define,
-  History,
-  Switch
-} from "@calpoly/mustang";
-import { html, LitElement } from "lit";
-import { HeaderElement } from "./components/blazing-header";
+import {Auth, define, History, Switch } from "@calpoly/mustang";
+import { html} from "lit";
+import { HeaderElement } from "./components/header-element.ts";
+import{ HomeViewElement } from "./views/home-view.ts";
+import { MealplanViewElement } from "./views/mealplan-view.ts";
+import { WorkoutScheduleViewElement } from "./views/workoutschedule-view.ts";
+import{RecipeListViewElement} from "./views/recipelist-view.ts";
+import { ExerciseOptionsViewElement } from "./views/exerciseoptions-view.ts";
+import {JournalViewElement} from "./views/journal-view.ts";
+import "./styles/page.css";
+
+
 
 
 
 const routes = [
 {
+  
     path: "/app",
     view: () => html`
-      <landing-view></landing-view>
+      <home-view></home-view>
     `
   },
   {
@@ -55,11 +60,18 @@ const routes = [
 define({
   "mu-auth": Auth.Provider,
   "mu-history": History.Provider,
-  "blazing-header": HeaderElement,
+  "profile-header": HeaderElement,
+  "home-view": HomeViewElement,
+  "mealplan-view": MealplanViewElement,
+  "workout-schedule-view": WorkoutScheduleViewElement,
+  "recipes-view": RecipeListViewElement,
+  "exerciseoptions-view": ExerciseOptionsViewElement,
+  "journaling-view": JournalViewElement,
+  
 
     "mu-switch": class AppSwitch extends Switch.Element {
     constructor() {
-    super(routes, "blazing:history", "blazing:auth");
+    super(routes, "profile:history", "profile:auth");
     }
     },
 
