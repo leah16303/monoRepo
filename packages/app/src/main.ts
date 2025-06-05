@@ -1,4 +1,4 @@
-import {Auth, define, History, Switch } from "@calpoly/mustang";
+import {Auth, define, History, Switch , Store} from "@calpoly/mustang";
 import { html} from "lit";
 import { HeaderElement } from "./components/header-element.ts";
 import{ HomeViewElement } from "./views/home-view.ts";
@@ -9,6 +9,9 @@ import { ExerciseOptionsViewElement } from "./views/exerciseoptions-view.ts";
 import {JournalViewElement} from "./views/journal-view.ts";
 import "./styles/page.css";
 
+import { Msg } from "./message.ts";
+import { Model, init } from "./model.ts";
+import update from "./update.ts";
 
 
 
@@ -58,6 +61,14 @@ const routes = [
 ];
 
 define({
+   "mu-store": class AppStore
+    extends Store.Provider<Model, Msg>
+  {
+    constructor() {
+      super(update, init, "blazing:auth");
+    }
+  },
+
   "mu-auth": Auth.Provider,
   "mu-history": History.Provider,
   "profile-header": HeaderElement,

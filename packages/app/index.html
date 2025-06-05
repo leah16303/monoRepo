@@ -19,8 +19,10 @@
     </head>
     
 <body>
+  
     <mu-history provides="profile:history">
       <mu-auth provides="profile:auth" redirect="/login.html">
+        <mu-store provides="blazing:model">
           <article class="page">
             <profile-header></profile-header>
             <mu-switch></mu-switch>

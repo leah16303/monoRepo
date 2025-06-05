@@ -1,6 +1,18 @@
-import { LitElement, html, css } from "lit";
+// import { LitElement, html, css } from "lit";
+import { View } from "@calpoly/mustang";
+import { Person } from "server/src/models";
+import { Msg } from "../messages";
+import { Model } from "../model";
 
-export class ExerciseOptionsViewElement extends LitElement {
+export class ExerciseOptionsViewElement extends  View<Model, Msg> {
+@property({attribute: "user-id"})
+  userid?: string;
+
+  @state()
+  get profile(): Person | undefined {
+    return this.model.profile;
+  }
+
   static styles = css`
     
   .main-content {
@@ -61,4 +73,23 @@ export class ExerciseOptionsViewElement extends LitElement {
       </main>
     `;
   }
+
+
+  attributeChangedCallback(
+  name: string,
+  oldValue: string,
+  newValue: string
+) {
+  super.attributeChangedCallback(name, oldValue, newValue);
+  if (
+    name === "user-id" &&
+    oldValue !== newValue &&
+    newValue
+  ) {
+    this.dispatchMessage([
+      "profile/select",
+      { userid: newValue }
+    ]);
+  }
+}
 }
