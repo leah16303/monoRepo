@@ -2,6 +2,7 @@ import { Auth, Update } from "@calpoly/mustang";
 import { Msg } from "./messages";
 import { Model } from "./model";
 
+
 export default function update(
   message: Msg,
   apply: Update.ApplyMap<Model>,
@@ -16,9 +17,24 @@ export default function update(
           )
         );
       break;
-    // put the rest of your cases here
+      case "profile/save":
+    saveProfile(message[1], user)
+      .then((profile) =>
+        apply((model) => ({ ...model, profile }))
+      )
+      .then(() => {
+        const { onSuccess } = message[1];
+        if (onSuccess) onSuccess();
+      })
+      .catch((error: Error) => {
+        const { onFailure } = message[1];
+        if (onFailure) onFailure(error);
+      });
+    break;
+    
     default:
-      throw new Error(`Unhandled Auth message "${unhandled}"`);
+      const unhandled: never = message[0]; // <-- never type
+      throw new Error(`Unhandled message "${unhandled}"`);
   }
 }
 
@@ -38,7 +54,38 @@ function loadProfile(
     .then((json: unknown) => {
       if (json) {
         console.log("Profile:", json);
-        return json as Traveler;
+        return json as Person;
       }
+    });
+
+
+}
+
+
+function saveProfile(
+  msg: {
+    userid: string;
+    profile: Person;
+  },
+  user: Auth.User
+) {
+  return fetch(`/api/travelers/${msg.userid}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      ...Auth.headers(user)
+    },
+    body: JSON.stringify(msg.profile)
+  })
+    .then((response: Response) => {
+      if (response.status === 200) return response.json();
+      else
+        throw new Error(
+          `Failed to save profile for ${msg.userid}`
+        );
+    })
+    .then((json: unknown) => {
+      if (json) return json as Person;
+      return undefined;
     });
 }
