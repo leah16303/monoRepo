@@ -67,3 +67,4 @@ function verify(username: string, password: string)
 }
 
 export default { create, verify };
+export { credentialModel };

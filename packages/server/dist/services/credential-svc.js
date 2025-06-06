@@ -28,6 +28,7 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 var credential_svc_exports = {};
 __export(credential_svc_exports, {
+  credentialModel: () => credentialModel,
   default: () => credential_svc_default
 });
 module.exports = __toCommonJS(credential_svc_exports);
@@ -81,3 +82,7 @@ function verify(username, password) {
   );
 }
 var credential_svc_default = { create, verify };
+// Annotate the CommonJS export names for ESM import in node:
+0 && (module.exports = {
+  credentialModel
+});

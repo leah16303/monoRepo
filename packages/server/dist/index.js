@@ -23,19 +23,49 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
 ));
 var import_express = __toESM(require("express"));
 var import_mongo = require("./services/mongo");
-var import_Persons = __toESM(require("./routes/Persons"));
+var import_workoutentry_svc = __toESM(require("./services/workoutentry-svc"));
+var import_workoutEntries = __toESM(require("./routes/workoutEntries"));
+var import_workoutWeeks = __toESM(require("./routes/workoutWeeks"));
 var import_auth = __toESM(require("./routes/auth"));
+var import_promises = __toESM(require("node:fs/promises"));
+var import_path = __toESM(require("path"));
+var import_credential_svc = require("./services/credential-svc");
 (0, import_mongo.connect)("healthdb");
 const app = (0, import_express.default)();
 const port = process.env.PORT || 3e3;
 const staticDir = process.env.STATIC || "public";
 app.use(import_express.default.json());
-app.use("/api/Persons", import_auth.authenticateUser, import_Persons.default);
+app.use("/api/workoutWeek", import_workoutWeeks.default);
+app.use("/api/workoutEntries", import_workoutEntries.default);
 app.use(import_express.default.static(staticDir));
-app.get("/hello", (req, res) => {
-  res.send("Hello, World");
+app.get("/api/user/:username", function(req, res) {
+  import_credential_svc.credentialModel.findOne({ username: req.params.username }).then((user) => {
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+    res.json({
+      _id: user._id.toString(),
+      username: user.username
+    });
+  }).catch((error) => {
+    console.error("Error fetching user:", error);
+    res.status(500).json({ error: "Server error" });
+  });
+});
+app.get("/workoutEntries/:id", (req, res) => {
+  const { userid } = req.params;
+  import_workoutentry_svc.default.get(userid).then((data) => {
+    if (data) res.set("Content-Type", "application/json").send(JSON.stringify(data));
+    else res.status(404).send();
+  });
 });
 app.use("/auth", import_auth.default);
+app.use("/app", (req, res) => {
+  const indexHtml = import_path.default.resolve(staticDir, "index.html");
+  import_promises.default.readFile(indexHtml, { encoding: "utf8" }).then(
+    (html) => res.send(html)
+  );
+});
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });

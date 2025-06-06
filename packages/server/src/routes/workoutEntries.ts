@@ -5,7 +5,7 @@ import WorkoutEntries from "../services/workoutentry-svc";
 
 const router = express.Router();
 
-// in src/routes/travelers.ts
+// in src/routes/travelers.tsw
 router.get("/", (_, res: Response) => {
   WorkoutEntries.index()
     .then((list: WorkoutEntry[]) => res.json(list))
