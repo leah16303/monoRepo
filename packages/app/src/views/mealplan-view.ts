@@ -1,4 +1,5 @@
 import { LitElement, html, css } from "lit";
+import  "../components/backbutton";
 
 export class MealplanViewElement extends LitElement {
   static styles = css`
@@ -30,6 +31,7 @@ export class MealplanViewElement extends LitElement {
 
   render() {
     return html`
+    <back-button></back-button>
       <div class="table-wrapper">
         <table>
           <thead>
@@ -55,3 +57,5 @@ export class MealplanViewElement extends LitElement {
     `;
   }
 }
+
+

@@ -1,4 +1,4 @@
-import { Person } from "server/src/models";
+import { Person } from "server/models";
 
 export type Msg =
   [

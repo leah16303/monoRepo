@@ -1,6 +1,7 @@
 import { Auth, Update } from "@calpoly/mustang";
 import { Msg } from "./messages";
 import { Model } from "./model";
+import { Person } from "server/models";
 
 
 export default function update(

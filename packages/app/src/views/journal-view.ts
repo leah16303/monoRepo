@@ -1,4 +1,5 @@
 import { LitElement, html, css } from "lit";
+import  "../components/backbutton";
 
 export class JournalViewElement extends LitElement {
   static styles = css`
@@ -9,6 +10,7 @@ export class JournalViewElement extends LitElement {
 
   render() {
     return html`
+    <back-button></back-button>
       <main class="journal-content">
         <p>
           Today I finally went for that run I kept putting off, and honestly,

@@ -7,9 +7,7 @@ import { WorkoutScheduleViewElement } from "./views/workoutschedule-view.ts";
 import{RecipeListViewElement} from "./views/recipelist-view.ts";
 import { ExerciseOptionsViewElement } from "./views/exerciseoptions-view.ts";
 import {JournalViewElement} from "./views/journal-view.ts";
-import "./styles/page.css";
-
-import { Msg } from "./message.ts";
+import { Msg } from "./messages.ts";
 import { Model, init } from "./model.ts";
 import update from "./update.ts";
 
@@ -27,31 +25,30 @@ const routes = [
   {
     path: "/app/mealplan/:id",
     view: (params: Switch.Params) => html`
-      <mealplan-view tour-id=${params.id}></mealplan-view>
+      <mealplan-view user-id=${params.id}></mealplan-view>
     `
   },
   {
     path: "/app/recipes/:id",
     view: (params: Switch.Params) => html`
-      <recipes-view tour-id=${params.id}></recipes-view>
+      <recipes-view user-id=${params.id}></recipes-view>
     `
   },
   {
-    path: "/app/workoutcalendar/:id",
-    view: (params: Switch.Params) => html`
-      <workoutcalendar-view tour-id=${params.id}></workoutcalendar-view>
-    `
+  path: "/app/workoutcalendar", // NO /:id here
+  view: () => html`
+    <workout-schedule-view></workout-schedule-view>` // NO tour-id attribute
   },
   {
     path: "/app/exerciseoptions/:id",
     view: (params: Switch.Params) => html`
-      <exerciseoptions-view tour-id=${params.id}></exerciseoptions-view>
+      <exerciseoptions-view user-id=${params.id}></exerciseoptions-view>
     `
   },
   {
     path: "/app/journaling/:id",
     view: (params: Switch.Params) => html`
-      <journaling-view tour-id=${params.id}></journaling-view>
+      <journaling-view user-id=${params.id}></journaling-view>
     `
   },
   {
