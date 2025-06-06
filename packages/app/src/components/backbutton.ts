@@ -6,7 +6,7 @@ import { History } from "@calpoly/mustang";
 export class BackButtonElement extends LitElement {
   static styles = css`
     button {
-      background: var(--color-button-background, #eee);
+      background: none;
       border: none;
       padding: 0.5rem 1rem;
       font-size: 1rem;
@@ -16,7 +16,8 @@ export class BackButtonElement extends LitElement {
     }
 
     button:hover {
-      background: var(--color-button-hover, #ddd);
+      
+      color: var(--dark-red, #aa1f1f);
     }
   `;
 

@@ -9,7 +9,7 @@ import auth, { authenticateUser } from "./routes/auth";
 import fs from "node:fs/promises";
 import path from "path";
 import credentialSvc, { credentialModel } from "./services/credential-svc";
-
+import recipeRoutes from "./routes/recipes";
 
 connect("healthdb"); 
 
@@ -22,6 +22,7 @@ app.use(express.json());
 app.use("/api/workoutWeek", workoutWeeks);
 
 app.use("/api/workoutEntries", workoutEntries);
+app.use("/api/recipes", recipeRoutes);
 //app.use("/api/Persons",  authenticateUser, Persons);
 
 //

@@ -62,7 +62,7 @@ define({
     extends Store.Provider<Model, Msg>
   {
     constructor() {
-      super(update, init, "blazing:auth");
+      super(update, init, "profile:auth");
     }
   },
 

@@ -30,6 +30,7 @@ var import_auth = __toESM(require("./routes/auth"));
 var import_promises = __toESM(require("node:fs/promises"));
 var import_path = __toESM(require("path"));
 var import_credential_svc = require("./services/credential-svc");
+var import_recipes = __toESM(require("./routes/recipes"));
 (0, import_mongo.connect)("healthdb");
 const app = (0, import_express.default)();
 const port = process.env.PORT || 3e3;
@@ -37,6 +38,7 @@ const staticDir = process.env.STATIC || "public";
 app.use(import_express.default.json());
 app.use("/api/workoutWeek", import_workoutWeeks.default);
 app.use("/api/workoutEntries", import_workoutEntries.default);
+app.use("/api/recipes", import_recipes.default);
 app.use(import_express.default.static(staticDir));
 app.get("/api/user/:username", function(req, res) {
   import_credential_svc.credentialModel.findOne({ username: req.params.username }).then((user) => {

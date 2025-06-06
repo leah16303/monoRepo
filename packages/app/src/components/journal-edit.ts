@@ -1,4 +1,4 @@
-import { html } from "lit";
+
 import { define, Form, View } from "@calpoly/mustang";
 import { Person } from "server/models";
 import { Msg } from "../messages";
@@ -34,15 +34,15 @@ export class JournalEditElement extends View<Model, Msg> {
   //   ]);
   // }
 
-  render() {
-    return html`
-      <main class="page">
-        <mu-form
-          .init=${this.profile}
-           @mu-form:submit=${this.handleSubmit}>
-          <!-- Form inputs -->
-        </mu-form>
-      </main>
-    `;
-  }
+//   render() {
+//     return html`
+//       <main class="page">
+//         <mu-form
+//           .init=${this.profile}
+//            @mu-form:submit=${this.handleSubmit}>
+//           <!-- Form inputs -->
+//         </mu-form>
+//       </main>
+//     `;
+//   }
 }

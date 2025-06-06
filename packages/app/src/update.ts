@@ -1,8 +1,7 @@
 import { Auth, Update } from "@calpoly/mustang";
 import { Msg } from "./messages";
 import { Model } from "./model";
-import { Person } from "server/models";
-
+import { Recipe } from "server/models";
 
 export default function update(
   message: Msg,
@@ -10,83 +9,90 @@ export default function update(
   user: Auth.User
 ) {
   switch (message[0]) {
-    case "profile/select":
-      loadProfile(message[1], user)
-        .then((profile) =>
-          apply((model) =>
-            ({ ...model, profile })
-          )
-        );
+    case "recipe/save":
+      saveRecipe(message[1], user)
+        .then((recipe) =>
+          apply((model) => ({
+            ...model,
+            // append new recipe; you can replace all or append
+            recipes: model.recipes ? [...model.recipes, recipe] : [recipe],
+          }))
+        )
+        .then(() => {
+          const { onSuccess } = message[1];
+          if (onSuccess) onSuccess();
+        })
+        .catch((error: Error) => {
+          const { onFailure } = message[1];
+          if (onFailure) onFailure(error);
+        });
       break;
-      case "profile/save":
-    saveProfile(message[1], user)
-      .then((profile) =>
-        apply((model) => ({ ...model, profile }))
-      )
-      .then(() => {
-        const { onSuccess } = message[1];
-        if (onSuccess) onSuccess();
-      })
-      .catch((error: Error) => {
-        const { onFailure } = message[1];
-        if (onFailure) onFailure(error);
-      });
-    break;
-    
+
+    case "profile/select":
+      // Load user profile and their recipes
+      loadUserData(message[1].userid, user)
+        .then((data) =>
+          apply((model) => ({
+            ...model,
+            profile: data.profile,
+            recipes: data.recipes,
+          }))
+        )
+        .catch((error) => console.error("Failed to load user data:", error));
+      break;
+
+    case "history/navigate":
+      // Handle navigation if needed
+      break;
+
     default:
-      const unhandled: never = message[0]; // <-- never type
-      throw new Error(`Unhandled message "${unhandled}"`);
+      console.warn("Unhandled message:", message);
+      break;
   }
 }
 
-function loadProfile(
-  payload: { userid: string },
-  user: Auth.User
-) {
-  return fetch(`/api/travelers/${payload.userid}`, {
-    headers: Auth.headers(user)
-  })
-    .then((response: Response) => {
-      if (response.status === 200) {
-        return response.json();
-      }
-      return undefined;
-    })
-    .then((json: unknown) => {
-      if (json) {
-        console.log("Profile:", json);
-        return json as Person;
-      }
-    });
-
-
-}
-
-
-function saveProfile(
+// Helper function to save a recipe to the backend
+function saveRecipe(
   msg: {
     userid: string;
-    profile: Person;
+    recipe: Recipe;
   },
   user: Auth.User
-) {
-  return fetch(`/api/travelers/${msg.userid}`, {
-    method: "PUT",
+): Promise<Recipe> {
+  return fetch(`/api/recipes/${msg.userid}`, {
+    method: "PUT",  // or POST if your server uses POST for create
     headers: {
       "Content-Type": "application/json",
-      ...Auth.headers(user)
+      ...Auth.headers(user),
     },
-    body: JSON.stringify(msg.profile)
+    body: JSON.stringify(msg.recipe),
   })
-    .then((response: Response) => {
-      if (response.status === 200) return response.json();
-      else
-        throw new Error(
-          `Failed to save profile for ${msg.userid}`
-        );
+    .then((response) => {
+      if (response.status === 200 || response.status === 201) {
+        return response.json();
+      } else {
+        throw new Error(`Failed to save recipe for ${msg.userid}: ${response.status}`);
+      }
     })
-    .then((json: unknown) => {
-      if (json) return json as Person;
-      return undefined;
-    });
+    .then((json) => json as Recipe);
+}
+
+// Helper function to load user data including recipes
+function loadUserData(
+  userid: string,
+  user: Auth.User
+): Promise<{ profile: any; recipes: Recipe[] }> {
+  return Promise.all([
+    fetch(`/api/profiles/${userid}`, {
+      headers: Auth.headers(user),
+    }).then(response => response.json()),
+    
+    fetch(`/api/recipes/${userid}`, {
+      method: "GET",
+      headers: Auth.headers(user),
+    }).then(response => response.json())
+  ]).then(([profile, recipes]) => ({
+    profile,
+    recipes: Array.isArray(recipes) ? recipes : []
+  }));
 }

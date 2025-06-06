@@ -1,4 +1,3 @@
-
 import { html, css, LitElement } from "lit";
 import { property } from "lit/decorators.js";
 import reset from "../styles/reset.css.ts";
@@ -9,61 +8,87 @@ export class HealthPlannerCardElement extends LitElement {
   @property({ type: String })
   category?: Category;
 
-  override render() {
-    return html`
-      <section class="card">
-        <h2>${this.category}</h2>
-        <div class="links">
-          <slot name="link-1"></slot>
-          <slot name="link-2"></slot>
-        </div>
-      </section>
-    `;
-  }
+override  render() {
+  return html`
+    <div class="card">
+      <h2>${this.title}</h2>
+      <div class="content">
+        <!-- Your card content -->
+      </div>
+      
+    </div>
+  `;
+}
 
   static styles = [
     reset.styles,
     css`
-      :host {
-        display: contents;
-      }
 
-      
-
-      .card {
-        grid-column: span 4;
-        background-color: var(--color-card);
-        padding: 2.2rem;
-        border-radius: 17px;
-        box-shadow: 0 2px 6px var(--dark-red);
-        color: var(--color-card-text);
-      }
-
-      .card h2 {
-        margin-bottom: 0.85rem;
-      }
-
-      .links {
-        display: flex;
-        flex-direction: column;
-      }
-
-
-      @media (max-width: 900px) {
-        .card {
-          grid-column: span 4;
-        }
-      }
-
-      @media (max-width: 600px) {
-        .card {
-          grid-column: span 4;
-        }
-      }
-
-   
-  
-    `
     
+      :host {
+    display: block;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .card {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    background-color: white;
+  }
+
+  .content {
+    flex: 1;
+    overflow: auto;
+  }
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: 1; /* This makes the links section expand to fill available space */
+  
+  /* Add these properties to ensure uniform spacing */
+  min-height: 120px; /* Minimum height for the links section */
+  justify-content: flex-start; /* Align links to the top */
+}
+
+/* Optional: If you want to center the links when there's only one */
+.links:has(::slotted(:only-child)) {
+  justify-content: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .card {
+    grid-column: span 6;
+    padding: 1.5rem;
+    min-height: 220px;
+  }
+  
+  .links {
+    min-height: 100px;
+  }
+}
+
+@media (max-width: 600px) {
+  .card {
+    grid-column: span 12;
+    padding: 1.25rem;
+    min-height: 200px;
+  }
+  
+  .links {
+    min-height: 80px;
+  }
+}
+    `
   ];
 }

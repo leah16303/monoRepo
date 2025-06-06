@@ -2,6 +2,7 @@ import { LitElement, html, css } from "lit";
 import { customElement, property } from "lit/decorators.js";
 
 
+
 interface WorkoutEntry {
   day: string;
   activity: string;
@@ -119,12 +120,12 @@ export class WorkoutScheduleElement extends LitElement {
 
     .exercise-table th {
       background-color: var(--color-background-header);
-      color: var(--color-text-heading);
+      color: var(--dark-red);
       font-weight: var(--font-display-bold);
     }
 
     .exercise-table td {
-      background-color: var(--color-table);
+      background-color: var( --color-card);
     }
 
     .rbutton {

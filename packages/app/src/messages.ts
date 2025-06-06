@@ -1,14 +1,23 @@
-import { Person } from "server/models";
+import { Recipe } from "server/models";
+
 
 export type Msg =
-  [
-      "profile/save",
+  | [
+      "recipe/save",
       {
         userid: string;
-        profile: Person;
+        recipe: Recipe;
         onSuccess?: () => void;
         onFailure?: (err: Error) => void;
       }
     ]
+  | [
+      "recipe/load",
+      {
+        userid: string;
+        onSuccess?: (recipes: Recipe[]) => void;
+        onFailure?: (err: Error) => void;
+      }
+    ]
   | ["profile/select", { userid: string }]
-  
+  | ["history/navigate", { href: string }]
