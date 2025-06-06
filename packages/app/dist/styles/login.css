@@ -1,0 +1,127 @@
+/* login.css */
+
+body.page {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #fff0f5, #fdf6f9);
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+mu-auth {
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+}
+
+mu-auth > h2 {
+  font-weight: 700;
+  color: #aa1f1f;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+main.card {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(170, 31, 31, 0.15);
+  padding: 2rem 2.5rem;
+  margin-bottom: 1rem;
+}
+
+login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+login-form label {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  font-weight: 600;
+  color: #aa1f1f;
+  font-size: 1rem;
+  user-select: none;
+}
+
+login-form label span {
+  margin-bottom: 0.4rem;
+}
+
+login-form input {
+  font-family: inherit;
+  font-size: 1.05rem;
+  padding: 0.5rem 0.75rem;
+  border: 2px solid #ccc;
+  border-radius: 0.5rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  outline-offset: 2px;
+}
+
+login-form input:focus {
+  border-color: #aa1f1f;
+  box-shadow: 0 0 8px rgba(170, 31, 31, 0.4);
+}
+
+
+login-form input[type="password"] {
+  letter-spacing: 0.15em; /* for obscuring password a bit */
+}
+
+login-form button {
+  margin-top: 1rem;
+  background-color: #aa1f1f;
+  color: white;
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 0.75rem 0;
+  border: none;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+  user-select: none;
+}
+
+login-form button:hover,
+login-form button:focus {
+  background-color: #880f0f;
+  outline: none;
+}
+
+p {
+  font-size: 1rem;
+  color: #555;
+}
+
+p a {
+  color: #aa1f1f;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+p a:hover,
+p a:focus {
+  color: #880f0f;
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  main.card {
+    padding: 1.5rem 1.75rem;
+  }
+
+  mu-auth > h2 {
+    font-size: 1.5rem;
+  }
+}

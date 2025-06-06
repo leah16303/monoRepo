@@ -1,0 +1,32 @@
+
+
+
+  
+  .links h3, .links h4 {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+  
+  .table-wrapper {
+    overflow-x: auto;
+    margin-top: 2rem;
+  }
+  
+
+  
+  th, td {
+    text-align: left;
+    padding: 1rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+  
+  thead {
+    background-color: var(--color-primary-light);
+    color: var(--color-text-on-primary);
+  }
+  
+  tbody tr:hover {
+    background-color: var(--color-hover);
+    transition: background-color 0.3s ease;
+  }
+  

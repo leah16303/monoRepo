@@ -1,11 +1,11 @@
-
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        
+<head>
+   <meta charset="utf-8" />
+    
         <link rel="stylesheet" href="/styles/reset.css" />
-        <link rel="stylesheet" href="/styles/page.css" />
+        
+        <link rel="stylesheet" href="/styles/login.css" />
         <link rel="stylesheet" href="/styles/tokens.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,26 +17,30 @@
         <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
         <?xml version="1.0" encoding="UTF-8"?>
-    </head>
-    
-    
-<body>
-  
-    <mu-history provides="profile:history">
-      <mu-auth provides="profile:auth" redirect="/login.html">
-        <mu-store provides="profile:model">
-          <article class="page">
-            <profile-header></profile-header>
-            <mu-switch></mu-switch>
-          </article>
-          
-        </mu-store>
-        
-      </mu-auth>
-    </mu-history>
+  <script type="module" crossorigin src="/assets/login-DUd9zJ11.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/reset.css-B0Pr4NGF.js">
+</head>
+
+
+<body class="page">
+  <mu-auth>
+    <h2>User Login</h2>
+      <main class="card">
+        <login-form api="/auth/login">
+          <label>
+            <span>Username:</span>
+            <input name="username" autocomplete="off" />
+          </label>
+          <label>
+            <span>Password:</span>
+            <input type="password" name="password" />
+          </label>
+        </login-form>
+      </main>
+      <p
+        >Or did you want to
+            <a href="newuser.html">Sign up as a new user</a>?
+      </p>
+    </mu-auth>
   </body>
-
-  <script type="module" src="/src/main.ts"></script>
-  
-
- </html>
+</html>

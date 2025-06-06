@@ -73,6 +73,7 @@ button:active,
   
   .header h1 {
     font-weight: var(--font-display-black);
+    font-size: 3rem;
     color: var(--title-color);
     padding: var(--size-spacing-medium);
     border-radius: var(--size-radius-medium);
@@ -90,7 +91,7 @@ button:active,
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 1rem;
+    padding: 0rem;
   }
 
  
