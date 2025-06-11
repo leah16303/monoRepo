@@ -32,3 +32,5 @@ export type WorkoutWeek = {
 };
 
 export default mongoose.model("WorkoutWeek", WorkoutWeekSchema);
+
+

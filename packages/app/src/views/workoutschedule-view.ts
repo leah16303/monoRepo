@@ -101,6 +101,3 @@ export class WorkoutScheduleViewElement extends LitElement {
   }
 }
 
-
-       
-        
