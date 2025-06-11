@@ -10,6 +10,7 @@ import fs from "node:fs/promises";
 import path from "path";
 import credentialSvc, { credentialModel } from "./services/credential-svc";
 import recipeRoutes from "./routes/recipes";
+import mealplanRoutes from './routes/mealplans';
 
 connect("healthdb"); 
 
@@ -24,6 +25,7 @@ app.use("/api/workoutWeek", workoutWeeks);
 app.use("/api/workoutEntries", workoutEntries);
 app.use("/api/recipes", recipeRoutes);
 //app.use("/api/Persons",  authenticateUser, Persons);
+app.use('/api/mealplans', mealplanRoutes);
 
 //
 

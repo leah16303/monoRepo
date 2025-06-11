@@ -1,8 +1,8 @@
-import{i as h,O as x,a as c,x as s,e as G,r as d,b as H,n as y,h as L,V as K,c as k,d as Q,_ as X,s as Z}from"./reset.css-B0Pr4NGF.js";/**
+import{i as h,O as b,a as c,x as s,e as K,r as d,b as Q,n as k,h as L,V as X,c as z,d as Z,_ as H,s as V}from"./reset.css-B0Pr4NGF.js";/**
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
- */const C=a=>(t,e)=>{e!==void 0?e.addInitializer(()=>{customElements.define(a,t)}):customElements.define(a,t)};var V=Object.defineProperty,W=(a,t,e,i)=>{for(var r=void 0,o=a.length-1,n;o>=0;o--)(n=a[o])&&(r=n(t,e,r)||r);return r&&V(t,e,r),r};const I=class I extends h{constructor(){super(...arguments),this._authObserver=new x(this,"profile:auth"),this.loggedIn=!1}connectedCallback(){super.connectedCallback(),this._authObserver.observe(t=>{const{user:e}=t;e&&e.authenticated?(this.loggedIn=!0,this.userid=e.username):(this.loggedIn=!1,this.userid=void 0)})}render(){return s`
+ */const S=a=>(r,e)=>{e!==void 0?e.addInitializer(()=>{customElements.define(a,r)}):customElements.define(a,r)};var ee=Object.defineProperty,J=(a,r,e,i)=>{for(var t=void 0,o=a.length-1,n;o>=0;o--)(n=a[o])&&(t=n(r,e,t)||t);return t&&ee(r,e,t),t};const I=class I extends h{constructor(){super(...arguments),this._authObserver=new b(this,"profile:auth"),this.loggedIn=!1}connectedCallback(){super.connectedCallback(),this._authObserver.observe(r=>{const{user:e}=r;e&&e.authenticated?(this.loggedIn=!0,this.userid=e.username):(this.loggedIn=!1,this.userid=void 0)})}render(){return s`
     <header class="header">
       <h1>Health Planner</h1>
       <div class="header-bottom-row">
@@ -25,7 +25,7 @@ import{i as h,O as x,a as c,x as s,e as G,r as d,b as H,n as y,h as L,V as K,c a
     </header>
   `}renderSignOutButton(){return s`
     <button
-      @click=${t=>{G.relay(t,"auth:message",["auth/signout"])}}
+      @click=${r=>{K.relay(r,"auth:message",["auth/signout"])}}
     >
       Sign Out
     </button>
@@ -33,7 +33,7 @@ import{i as h,O as x,a as c,x as s,e as G,r as d,b as H,n as y,h as L,V as K,c a
     <a
       class="sign-in-btn"
       href="/login.html"
-      @click=${t=>{t.preventDefault(),location.assign("/login.html")}}
+      @click=${r=>{r.preventDefault(),location.assign("/login.html")}}
       >Sign In</a
     >
   `}};I.styles=c`
@@ -145,14 +145,14 @@ button:active,
     color: var(--dark-red);
   }
 
-   `;let f=I;W([d()],f.prototype,"loggedIn");W([d()],f.prototype,"userid");var ee=Object.defineProperty,re=(a,t,e,i)=>{for(var r=void 0,o=a.length-1,n;o>=0;o--)(n=a[o])&&(r=n(t,e,r)||r);return r&&ee(t,e,r),r};const A=class A extends h{constructor(){super(...arguments),this._authObserver=new x(this,"profile:auth")}connectedCallback(){super.connectedCallback(),this._authObserver.observe(t=>{const{user:e}=t;this.userid=e!=null&&e.authenticated?e.username:void 0})}render(){const t=new Date().toLocaleDateString(void 0,{weekday:"long",month:"long",day:"numeric",year:"numeric"});return s`
+   `;let v=I;J([d()],v.prototype,"loggedIn");J([d()],v.prototype,"userid");var re=Object.defineProperty,te=(a,r,e,i)=>{for(var t=void 0,o=a.length-1,n;o>=0;o--)(n=a[o])&&(t=n(r,e,t)||t);return t&&re(r,e,t),t};const D=class D extends h{constructor(){super(...arguments),this._authObserver=new b(this,"profile:auth")}connectedCallback(){super.connectedCallback(),this._authObserver.observe(r=>{const{user:e}=r;this.userid=e!=null&&e.authenticated?e.username:void 0})}render(){const r=new Date().toLocaleDateString(void 0,{weekday:"long",month:"long",day:"numeric",year:"numeric"});return s`
       <div class="greeting">
 
       <p> Hello ${this.userid??"Guest"}! <p>
         
-        <div class="date">${t}</div>
+        <div class="date">${r}</div>
       </div>
-    `}};A.styles=c`
+    `}};D.styles=c`
     .greeting {
       padding: 1rem;
       font-size: 1.rem;
@@ -163,7 +163,7 @@ button:active,
       font-size: 1rem;
       color: var(--dark-black-text );;
     }
-  `;let z=A;re([d()],z.prototype,"userid");var te=Object.defineProperty,ie=(a,t,e,i)=>{for(var r=void 0,o=a.length-1,n;o>=0;o--)(n=a[o])&&(r=n(t,e,r)||r);return r&&te(t,e,r),r};const D=class D extends h{render(){return s`
+  `;let F=D;te([d()],F.prototype,"userid");var ie=Object.defineProperty,ae=(a,r,e,i)=>{for(var t=void 0,o=a.length-1,n;o>=0;o--)(n=a[o])&&(t=n(r,e,t)||t);return t&&ie(r,e,t),t};const T=class T extends h{render(){return s`
     <div class="card">
       <h2>${this.title}</h2>
       <div class="content">
@@ -171,7 +171,7 @@ button:active,
       </div>
       
     </div>
-  `}};D.styles=[H.styles,c`
+  `}};T.styles=[Q.styles,c`
 
     
       :host {
@@ -238,7 +238,7 @@ button:active,
     min-height: 80px;
   }
 }
-    `];let _=D;ie([y({type:String})],_.prototype,"category");var ae=Object.defineProperty,q=(a,t,e,i)=>{for(var r=void 0,o=a.length-1,n;o>=0;o--)(n=a[o])&&(r=n(t,e,r)||r);return r&&ae(t,e,r),r};const T=class T extends h{constructor(){super(...arguments),this.loggedIn=!1,this._authObserver=new x(this,"profile:auth")}connectedCallback(){super.connectedCallback(),this._authObserver.observe(t=>{const{user:e}=t;e!=null&&e.authenticated?(this.loggedIn=!0,this.userid=e.username):(this.loggedIn=!1,this.userid=void 0)})}render(){return!this.loggedIn||!this.userid?s`
+    `];let C=T;ae([k({type:String})],C.prototype,"category");var oe=Object.defineProperty,W=(a,r,e,i)=>{for(var t=void 0,o=a.length-1,n;o>=0;o--)(n=a[o])&&(t=n(r,e,t)||t);return t&&oe(r,e,t),t};const A=class A extends h{constructor(){super(...arguments),this.loggedIn=!1,this._authObserver=new b(this,"profile:auth")}connectedCallback(){super.connectedCallback(),this._authObserver.observe(r=>{const{user:e}=r;e!=null&&e.authenticated?(this.loggedIn=!0,this.userid=e.username):(this.loggedIn=!1,this.userid=void 0)})}render(){return!this.loggedIn||!this.userid?s`
         <section class="login-warning">
           <h1>Sign in to continue</h1>
           <p> click link below to sign in</p>
@@ -279,7 +279,7 @@ button:active,
       <a class="login-button" @click=${()=>location.assign("/login.html")}>
         Sign In
       </a>
-    `}};T.styles=c`
+    `}};A.styles=c`
 
 
 health-planner-card {
@@ -566,9 +566,9 @@ health-planner-card {
       padding: 2rem 1rem;
       font-family: var(--font-body);
     }
-  `;let b=T;q([d()],b.prototype,"loggedIn");q([d()],b.prototype,"userid");var oe=Object.getOwnPropertyDescriptor,se=(a,t,e,i)=>{for(var r=i>1?void 0:i?oe(t,e):t,o=a.length-1,n;o>=0;o--)(n=a[o])&&(r=n(r)||r);return r};let F=class extends h{render(){return s`
+  `;let x=A;W([d()],x.prototype,"loggedIn");W([d()],x.prototype,"userid");var se=Object.getOwnPropertyDescriptor,ne=(a,r,e,i)=>{for(var t=i>1?void 0:i?se(r,e):r,o=a.length-1,n;o>=0;o--)(n=a[o])&&(t=n(t)||t);return t};let j=class extends h{render(){return s`
       <button @click=${this.goBack}>← Back to Dashboard</button>
-    `}goBack(){L.dispatch(this,"history/navigate",{href:"/app"})}};F.styles=c`
+    `}goBack(){L.dispatch(this,"history/navigate",{href:"/app"})}};j.styles=c`
     button {
       background: none;
       border: none;
@@ -583,8 +583,43 @@ health-planner-card {
       
       color: var(--dark-red, #aa1f1f);
     }
-  `;F=se([C("back-button")],F);const R=class R extends h{render(){return s`
-    <back-button></back-button>
+  `;j=ne([S("back-button")],j);var de=Object.defineProperty,m=(a,r,e,i)=>{for(var t=void 0,o=a.length-1,n;o>=0;o--)(n=a[o])&&(t=n(r,e,t)||t);return t&&de(r,e,t),t};const R=class R extends h{constructor(){super(...arguments),this.loading=!0,this.error=null,this.mealplans=[],this.editingCell=null,this.editingValue="",this._authObserver=new b(this,"profile:auth")}connectedCallback(){super.connectedCallback(),this._authObserver.observe(r=>{const{user:e}=r;e!=null&&e.authenticated?this.fetchUserObjectId(e.username):(this.userid=void 0,this.loading=!1,this.error="User not authenticated")})}async fetchUserObjectId(r){var e;try{const i=await fetch(`/api/user/${r}`,{credentials:"include",headers:{"Content-Type":"application/json"}});if(!i.ok)throw new Error("User fetch failed");const t=await i.json();this.userid=((e=t._id)==null?void 0:e.$oid)||t._id,this.userid&&(await this.initializeMealPlan(),this.fetchMealPlans(this.userid))}catch(i){this.error=i instanceof Error?i.message:"Failed to fetch user",this.loading=!1}}async initializeMealPlan(){if(this.userid)try{await fetch(`/api/mealplans/${this.userid}/initialize`,{method:"POST",credentials:"include",headers:{"Content-Type":"application/json"}})}catch(r){console.warn("Failed to initialize meal plan:",r)}}async fetchMealPlans(r){this.loading=!0;try{const e=await fetch(`/api/mealplans/${r}`,{credentials:"include"});if(!e.ok)throw new Error("Failed to load meal plans");const i=await e.json();this.mealplans=i,this.loading=!1}catch(e){this.error=e instanceof Error?e.message:"Error loading meal plans",this.loading=!1}}async updateMealPlan(r,e,i){if(this.userid)try{if(!(await fetch(`/api/mealplans/${this.userid}/day/${r}`,{method:"PUT",credentials:"include",headers:{"Content-Type":"application/json"},body:JSON.stringify({[e]:i})})).ok)throw new Error("Failed to update meal plan");this.fetchMealPlans(this.userid)}catch(t){this.error=t instanceof Error?t.message:"Error updating meal plan"}}startEditing(r,e,i){this.editingCell={day:r,meal:e},this.editingValue=i}cancelEditing(){this.editingCell=null,this.editingValue=""}async saveEditing(){this.editingCell&&(await this.updateMealPlan(this.editingCell.day,this.editingCell.meal,this.editingValue),this.editingCell=null,this.editingValue="")}handleInputChange(r){const e=r.target;this.editingValue=e.value}handleKeyDown(r){r.key==="Enter"?this.saveEditing():r.key==="Escape"&&this.cancelEditing()}getMealForDay(r,e){const i=this.mealplans.find(t=>t.day===r);return i?i[e]:""}renderCell(r,e){var o,n;const i=this.getMealForDay(r,e);return((o=this.editingCell)==null?void 0:o.day)===r&&((n=this.editingCell)==null?void 0:n.meal)===e?s`
+        <input
+          type="text"
+          .value=${this.editingValue}
+          @input=${this.handleInputChange}
+          @keydown=${this.handleKeyDown}
+          @blur=${this.saveEditing}
+          class="edit-input"
+          autofocus
+        />
+      `:s`
+      <span 
+        class="editable-cell" 
+        @click=${()=>this.startEditing(r,e,i)}
+        title="Click to edit"
+      >
+        ${i||s`<span class="placeholder">Click to add</span>`}
+      </span>
+    `}render(){return this.loading?s`
+        <back-button></back-button>
+        <div class="loading">Loading meal plans...</div>
+      `:this.error?s`
+        <back-button></back-button>
+        <div class="error">Error: ${this.error}</div>
+      `:this.userid?s`
+      <back-button></back-button>
+      
+      <div class="controls">
+        <button class="refresh-button" @click=${()=>this.fetchMealPlans(this.userid)}>
+          Refresh
+        </button>
+      </div>
+
+      <div class="instructions">
+       Click on any cell to edit your meal plan. Press Enter to save or Escape to cancel.
+      </div>
+
       <div class="table-wrapper">
         <table>
           <thead>
@@ -597,42 +632,134 @@ health-planner-card {
             </tr>
           </thead>
           <tbody>
-            <tr><td>Sunday</td><td>Avocado toast</td><td>Hamburger</td><td>Salmon and potatoes</td><td></td></tr>
-            <tr><td>Monday</td><td>Hashbrowns and eggs</td><td>Chicken tikka masala</td><td>Beef stew</td><td>Brownies</td></tr>
-            <tr><td>Tuesday</td><td>Overnight oats</td><td>Burrito</td><td>Chicken salad</td><td></td></tr>
-            <tr><td>Wednesday</td><td>Avocado toast</td><td>Pizza</td><td>Fried chicken and fries</td><td></td></tr>
-            <tr><td>Thursday</td><td>Bacon and eggs</td><td>Hamburger</td><td>Tuna sandwich</td><td>Chocolate muffin</td></tr>
-            <tr><td>Friday</td><td>Overnight oats</td><td>Chicken salad</td><td>Salmon and potatoes</td><td></td></tr>
-            <tr><td>Saturday</td><td>Toast and eggs</td><td>Pot roast</td><td>Beef burrito</td><td></td></tr>
+            ${["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"].map(e=>s`
+              <tr>
+                <td><strong>${e}</strong></td>
+                <td>${this.renderCell(e,"breakfast")}</td>
+                <td>${this.renderCell(e,"lunch")}</td>
+                <td>${this.renderCell(e,"dinner")}</td>
+                <td>${this.renderCell(e,"snack")}</td>
+              </tr>
+            `)}
           </tbody>
         </table>
       </div>
-    `}};R.styles=c`
+    `:s`
+        <back-button></back-button>
+        <div class="error">User not authenticated</div>
+      `}};R.styles=c`
     .table-wrapper {
       overflow-x: auto;
       margin: 1rem 0;
+      max-width: 100%;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      background: white;
+      
     }
+
     table {
       border-collapse: collapse;
       width: 100%;
       font-family: Arial, sans-serif;
     }
+
     thead {
       background-color: #333;
       color: white;
     }
+
     th, td {
       border: 1px solid #ddd;
       padding: 0.5rem 1rem;
       text-align: left;
+      position: relative;
     }
+
     tbody tr:nth-child(even) {
       background-color: #f9f9f9;
     }
+
     tbody tr:hover {
       background-color: #f1f1f1;
     }
-  `;let S=R;var ne=Object.defineProperty,de=Object.getOwnPropertyDescriptor,O=(a,t,e,i)=>{for(var r=i>1?void 0:i?de(t,e):t,o=a.length-1,n;o>=0;o--)(n=a[o])&&(r=(i?n(t,e,r):n(r))||r);return i&&r&&ne(t,e,r),r};let m=class extends h{constructor(){super(...arguments),this.entries=[]}updated(a){super.updated(a),a.has("src")&&this.src&&this.hydrate(this.src)}hydrate(a){fetch(a).then(t=>{if(!t.ok)throw new Error(`Failed to fetch: ${t.status} ${t.statusText}`);return t.json()}).then(t=>{t&&t.entries?(this.entries=t.entries,console.log("Loaded entries:",this.entries)):(console.warn("No entries found in workout week data"),this.entries=[])}).catch(t=>{console.error("Error loading JSON data:",t),this.entries=[]})}render(){return s`
+
+    .editable-cell {
+      cursor: pointer;
+      display: block;
+      min-height: 1.2em;
+      padding: 0.25rem;
+      border-radius: 4px;
+      transition: background-color 0.2s;
+    }
+
+    .editable-cell:hover {
+      background-color: rgba(0, 123, 255, 0.1);
+    }
+
+    .placeholder {
+      color: #999;
+      font-style: italic;
+    }
+
+    .edit-input {
+      width: 100%;
+      border: 2px solid #007bff;
+      border-radius: 4px;
+      padding: 0.25rem;
+      font-size: inherit;
+      font-family: inherit;
+    }
+
+    .edit-input:focus {
+      outline: none;
+      border-color: #0056b3;
+    }
+
+    .loading, .error {
+      text-align: center;
+      padding: 2rem;
+      margin: 1rem 0;
+    }
+
+    .error {
+      color: #dc3545;
+      background-color: #f8d7da;
+      border: 1px solid #f5c6cb;
+      border-radius: 4px;
+    }
+
+    .loading {
+      color: #6c757d;
+    }
+
+    .controls {
+      margin-bottom: 1rem;
+    }
+
+    .refresh-button {
+      padding: 0.5rem 1rem;
+      background: var(--color-accent, #6c757d);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .refresh-button:hover {
+      opacity: 0.8;
+    }
+
+    .instructions {
+      background-color: #FFF4DE;
+      padding: 1rem;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+      color: #495057;
+    }
+  `;let p=R;m([d()],p.prototype,"userid");m([d()],p.prototype,"loading");m([d()],p.prototype,"error");m([d()],p.prototype,"mealplans");m([d()],p.prototype,"editingCell");m([d()],p.prototype,"editingValue");var le=Object.defineProperty,ce=Object.getOwnPropertyDescriptor,P=(a,r,e,i)=>{for(var t=i>1?void 0:i?ce(r,e):r,o=a.length-1,n;o>=0;o--)(n=a[o])&&(t=(i?n(r,e,t):n(t))||t);return i&&t&&le(r,e,t),t};let y=class extends h{constructor(){super(...arguments),this.entries=[]}updated(a){super.updated(a),a.has("src")&&this.src&&this.hydrate(this.src)}hydrate(a){fetch(a).then(r=>{if(!r.ok)throw new Error(`Failed to fetch: ${r.status} ${r.statusText}`);return r.json()}).then(r=>{r&&r.entries?(this.entries=r.entries,console.log("Loaded entries:",this.entries)):(console.warn("No entries found in workout week data"),this.entries=[])}).catch(r=>{console.error("Error loading JSON data:",r),this.entries=[]})}render(){return s`
       <div class="main-content">
         ${this.entries.length>0?s`
             <table class="exercise-table">
@@ -658,7 +785,7 @@ health-planner-card {
         <p>Add your first schedule item now</p>
         <button type="button" class = rbutton > + </button>`}
       </div>
-    `}};m.styles=c`
+    `}};y.styles=c`
     :host {
       display: block;
       padding: var(--size-spacing-large);
@@ -706,13 +833,13 @@ health-planner-card {
       transform: scale(1.1);
     }
 
-  `;O([y({type:Array})],m.prototype,"entries",2);O([y()],m.prototype,"src",2);m=O([C("workout-schedule")],m);var le=Object.defineProperty,P=(a,t,e,i)=>{for(var r=void 0,o=a.length-1,n;o>=0;o--)(n=a[o])&&(r=n(t,e,r)||r);return r&&le(t,e,r),r};const E=class E extends h{constructor(){super(...arguments),this.loading=!0,this._authObserver=new x(this,"profile:auth")}connectedCallback(){super.connectedCallback(),console.log("WorkoutScheduleView connected"),this._authObserver.observe(t=>{const{user:e}=t;console.log("Auth observer - user:",e),e!=null&&e.authenticated&&(console.log("User authenticated:",e.username),this.fetchUserObjectId(e.username))})}async fetchUserObjectId(t){var e;try{console.log("Fetching user ObjectId for:",t);const i=await fetch(`/api/user/${t}`,{credentials:"include",headers:{"Content-Type":"application/json"}});if(console.log("User fetch response:",i.status),!i.ok)throw new Error(`HTTP ${i.status}: ${i.statusText}`);const r=await i.json();console.log("User data received:",r),this.userid=((e=r._id)==null?void 0:e.$oid)||r._id,this.loading=!1,this.error=void 0}catch(i){console.error("Error fetching user ObjectId:",i),this.error=i instanceof Error?i.message:"Failed to load user data",this.loading=!1}}render(){return console.log("WorkoutScheduleView render - userid:",this.userid,"loading:",this.loading,"error:",this.error),s`
+  `;P([k({type:Array})],y.prototype,"entries",2);P([k()],y.prototype,"src",2);y=P([S("workout-schedule")],y);var he=Object.defineProperty,E=(a,r,e,i)=>{for(var t=void 0,o=a.length-1,n;o>=0;o--)(n=a[o])&&(t=n(r,e,t)||t);return t&&he(r,e,t),t};const U=class U extends h{constructor(){super(...arguments),this.loading=!0,this._authObserver=new b(this,"profile:auth")}connectedCallback(){super.connectedCallback(),console.log("WorkoutScheduleView connected"),this._authObserver.observe(r=>{const{user:e}=r;console.log("Auth observer - user:",e),e!=null&&e.authenticated&&(console.log("User authenticated:",e.username),this.fetchUserObjectId(e.username))})}async fetchUserObjectId(r){var e;try{console.log("Fetching user ObjectId for:",r);const i=await fetch(`/api/user/${r}`,{credentials:"include",headers:{"Content-Type":"application/json"}});if(console.log("User fetch response:",i.status),!i.ok)throw new Error(`HTTP ${i.status}: ${i.statusText}`);const t=await i.json();console.log("User data received:",t),this.userid=((e=t._id)==null?void 0:e.$oid)||t._id,this.loading=!1,this.error=void 0}catch(i){console.error("Error fetching user ObjectId:",i),this.error=i instanceof Error?i.message:"Failed to load user data",this.loading=!1}}render(){return console.log("WorkoutScheduleView render - userid:",this.userid,"loading:",this.loading,"error:",this.error),s`
       <back-button></back-button>
       ${this.loading?s`<div class="loading">
         <p>Log in to start adding items to your schedule</p>
         
         </div>`:this.error?s`<div class="error">Error: ${this.error}</div>`:this.userid?s`<workout-schedule src="/api/workoutWeek/${this.userid}"></workout-schedule>`:s`<div class="error">No user ID available</div>`}
-    `}};E.styles=c`
+    `}};U.styles=c`
     :host {
       display: block;
       padding: var(--size-spacing-medium);
@@ -726,7 +853,7 @@ health-planner-card {
     .error {
       color: var(--color-error, #d32f2f);
     }
-  `;let g=E;P([d()],g.prototype,"userid");P([d()],g.prototype,"loading");P([d()],g.prototype,"error");var ce=Object.defineProperty,he=Object.getOwnPropertyDescriptor,$=(a,t,e,i)=>{for(var r=i>1?void 0:i?he(t,e):t,o=a.length-1,n;o>=0;o--)(n=a[o])&&(r=(i?n(t,e,r):n(r))||r);return i&&r&&ce(t,e,r),r};let u=class extends h{constructor(){super(...arguments),this.userid="",this._isSubmitting=!1,this._message=""}render(){return s`
+  `;let g=U;E([d()],g.prototype,"userid");E([d()],g.prototype,"loading");E([d()],g.prototype,"error");var pe=Object.defineProperty,ue=Object.getOwnPropertyDescriptor,_=(a,r,e,i)=>{for(var t=i>1?void 0:i?ue(r,e):r,o=a.length-1,n;o>=0;o--)(n=a[o])&&(t=(i?n(r,e,t):n(t))||t);return i&&t&&pe(r,e,t),t};let f=class extends h{constructor(){super(...arguments),this.userid="",this._isSubmitting=!1,this._message=""}render(){return s`
       <div class="page">
         <h2>Add New Recipe</h2>
         ${this._message?s`<div class="message ${this._message.includes("Error")?"error":"success"}">${this._message}</div>`:""}
@@ -769,7 +896,7 @@ health-planner-card {
           </button>
         </form>
       </div>
-    `}async handleSubmit(a){if(a.preventDefault(),!this.userid){this._message="Error: No user ID available";return}const t=a.target,e=new FormData(t),i=e.get("title"),r=e.get("ingredients"),o=e.get("instructions");if(!i||!r||!o){this._message="Error: Please fill in all fields";return}this._isSubmitting=!0,this._message="";const n={userid:this.userid,title:i.trim(),ingredients:r.split(",").map(l=>l.trim()).filter(l=>l.length>0),instructions:o.trim()};try{console.log("Saving recipe:",n);const l=await fetch(`/api/recipes/${this.userid}`,{method:"POST",headers:{"Content-Type":"application/json"},credentials:"include",body:JSON.stringify(n)});if(console.log("Response status:",l.status),!l.ok){const M=await l.text();throw new Error(`Failed to save recipe: ${l.status} ${M}`)}const Y=await l.json();console.log("Recipe saved successfully:",Y),this._message="Recipe saved successfully!",t.reset(),this.dispatchEvent(new CustomEvent("recipe-saved",{detail:{recipe:Y},bubbles:!0,composed:!0})),setTimeout(()=>{this._message=""},3e3)}catch(l){console.error("Failed to save recipe:",l),this._message=`Error: ${l instanceof Error?l.message:"Unknown error occurred"}`,setTimeout(()=>{this._message=""},5e3)}finally{this._isSubmitting=!1}}};u.styles=c`
+    `}async handleSubmit(a){if(a.preventDefault(),!this.userid){this._message="Error: No user ID available";return}const r=a.target,e=new FormData(r),i=e.get("title"),t=e.get("ingredients"),o=e.get("instructions");if(!i||!t||!o){this._message="Error: Please fill in all fields";return}this._isSubmitting=!0,this._message="";const n={userid:this.userid,title:i.trim(),ingredients:t.split(",").map(l=>l.trim()).filter(l=>l.length>0),instructions:o.trim()};try{console.log("Saving recipe:",n);const l=await fetch(`/api/recipes/${this.userid}`,{method:"POST",headers:{"Content-Type":"application/json"},credentials:"include",body:JSON.stringify(n)});if(console.log("Response status:",l.status),!l.ok){const G=await l.text();throw new Error(`Failed to save recipe: ${l.status} ${G}`)}const Y=await l.json();console.log("Recipe saved successfully:",Y),this._message="Recipe saved successfully!",r.reset(),this.dispatchEvent(new CustomEvent("recipe-saved",{detail:{recipe:Y},bubbles:!0,composed:!0})),setTimeout(()=>{this._message=""},3e3)}catch(l){console.error("Failed to save recipe:",l),this._message=`Error: ${l instanceof Error?l.message:"Unknown error occurred"}`,setTimeout(()=>{this._message=""},5e3)}finally{this._isSubmitting=!1}}};f.styles=c`
     .page {
       max-width: 600px;
       margin: 0 auto;
@@ -843,7 +970,7 @@ health-planner-card {
       cursor: not-allowed;
       opacity: 0.7;
     }
-  `;$([y()],u.prototype,"userid",2);$([d()],u.prototype,"_isSubmitting",2);$([d()],u.prototype,"_message",2);u=$([C("recipe-edit")],u);var pe=Object.defineProperty,w=(a,t,e,i)=>{for(var r=void 0,o=a.length-1,n;o>=0;o--)(n=a[o])&&(r=n(t,e,r)||r);return r&&pe(t,e,r),r};const B=class B extends h{constructor(){super(...arguments),this.loading=!0,this.error=null,this.recipes=[],this.showAddForm=!1,this._authObserver=new x(this,"profile:auth"),this.handleRecipeSaved=()=>{console.log("Recipe saved, refreshing list..."),this.showAddForm=!1,this.refreshRecipes()}}connectedCallback(){super.connectedCallback(),this._authObserver.observe(t=>{const{user:e}=t;e!=null&&e.authenticated?this.fetchUserObjectId(e.username):(this.userid=void 0,this.loading=!1,this.error="User not authenticated")}),this.addEventListener("recipe-saved",this.handleRecipeSaved)}disconnectedCallback(){super.disconnectedCallback(),this.removeEventListener("recipe-saved",this.handleRecipeSaved)}async fetchUserObjectId(t){var e;try{const i=await fetch(`/api/user/${t}`,{credentials:"include",headers:{"Content-Type":"application/json"}});if(!i.ok)throw new Error("User fetch failed");const r=await i.json();this.userid=((e=r._id)==null?void 0:e.$oid)||r._id,this.userid&&this.fetchRecipes(this.userid)}catch(i){this.error=i instanceof Error?i.message:"Failed to fetch user",this.loading=!1}}async fetchRecipes(t){this.loading=!0;try{const e=await fetch(`/api/recipes/${t}`);if(!e.ok)throw new Error("Failed to load recipes");const i=await e.json();this.recipes=i,this.loading=!1}catch(e){this.error=e instanceof Error?e.message:"Error loading recipes",this.loading=!1}}async refreshRecipes(){this.userid&&await this.fetchRecipes(this.userid)}toggleAddForm(){this.showAddForm=!this.showAddForm}render(){return s`
+  `;_([k()],f.prototype,"userid",2);_([d()],f.prototype,"_isSubmitting",2);_([d()],f.prototype,"_message",2);f=_([S("recipe-edit")],f);var ge=Object.defineProperty,$=(a,r,e,i)=>{for(var t=void 0,o=a.length-1,n;o>=0;o--)(n=a[o])&&(t=n(r,e,t)||t);return t&&ge(r,e,t),t};const M=class M extends h{constructor(){super(...arguments),this.loading=!0,this.error=null,this.recipes=[],this.showAddForm=!1,this._authObserver=new b(this,"profile:auth"),this.handleRecipeSaved=()=>{console.log("Recipe saved, refreshing list..."),this.showAddForm=!1,this.refreshRecipes()}}connectedCallback(){super.connectedCallback(),this._authObserver.observe(r=>{const{user:e}=r;e!=null&&e.authenticated?this.fetchUserObjectId(e.username):(this.userid=void 0,this.loading=!1,this.error="User not authenticated")}),this.addEventListener("recipe-saved",this.handleRecipeSaved)}disconnectedCallback(){super.disconnectedCallback(),this.removeEventListener("recipe-saved",this.handleRecipeSaved)}async fetchUserObjectId(r){var e;try{const i=await fetch(`/api/user/${r}`,{credentials:"include",headers:{"Content-Type":"application/json"}});if(!i.ok)throw new Error("User fetch failed");const t=await i.json();this.userid=((e=t._id)==null?void 0:e.$oid)||t._id,this.userid&&this.fetchRecipes(this.userid)}catch(i){this.error=i instanceof Error?i.message:"Failed to fetch user",this.loading=!1}}async fetchRecipes(r){this.loading=!0;try{const e=await fetch(`/api/recipes/${r}`);if(!e.ok)throw new Error("Failed to load recipes");const i=await e.json();this.recipes=i,this.loading=!1}catch(e){this.error=e instanceof Error?e.message:"Error loading recipes",this.loading=!1}}async refreshRecipes(){this.userid&&await this.fetchRecipes(this.userid)}toggleAddForm(){this.showAddForm=!this.showAddForm}render(){return s`
       <back-button></back-button>
       <main class="page">
         ${this.userid?s`
@@ -864,18 +991,18 @@ health-planner-card {
           </div>
         `:""}
         
-        ${this.loading?s`<div class="loading">Loading recipes...</div>`:this.error?s`<div class="error">Error: ${this.error}</div>`:this.userid?this.recipes.length===0?s`<div class="empty">No recipes found. Click "Add New Recipe" to get started!</div>`:this.recipes.map(t=>s`
+        ${this.loading?s`<div class="loading">Loading recipes...</div>`:this.error?s`<div class="error">Error: ${this.error}</div>`:this.userid?this.recipes.length===0?s`<div class="empty">No recipes found. Click "Add New Recipe" to get started!</div>`:this.recipes.map(r=>s`
                 <section class="recipe">
-                  <h3>${t.title}</h3>
+                  <h3>${r.title}</h3>
                   <p><strong>Ingredients:</strong></p>
                   <ul>
-                    ${t.ingredients.map(e=>s`<li>${e}</li>`)}
+                    ${r.ingredients.map(e=>s`<li>${e}</li>`)}
                   </ul>
-                  <p><strong>Instructions:</strong> ${t.instructions}</p>
+                  <p><strong>Instructions:</strong> ${r.instructions}</p>
                 </section>
               `):s`<div class="error">No user ID available</div>`}
       </main>
-    `}};B.styles=c`
+    `}};M.styles=c`
     .page {
       max-width: 800px;
       margin: 0 auto;
@@ -962,14 +1089,14 @@ health-planner-card {
     .add-form-container.visible {
       max-height: 1000px;
     }
-  `;let p=B;w([d()],p.prototype,"userid");w([d()],p.prototype,"loading");w([d()],p.prototype,"error");w([d()],p.prototype,"recipes");w([d()],p.prototype,"showAddForm");var ge=Object.defineProperty,ue=Object.getOwnPropertyDescriptor,J=(a,t,e,i)=>{for(var r=i>1?void 0:i?ue(t,e):t,o=a.length-1,n;o>=0;o--)(n=a[o])&&(r=(i?n(t,e,r):n(r))||r);return i&&r&&ge(t,e,r),r};const U=class U extends K{get profile(){return this.model.profile}render(){const e=[["Running","Cardiovascular Activity"],["Cycling","Cardiovascular Activity"],["Swimming","Cardiovascular Activity"],["Jump Rope","Cardiovascular Activity"],["Push-Ups","Strength Training"],["Squats","Strength Training"],["Deadlifts","Strength Training"],["Bench Press","Strength Training"]].reduce((i,[r,o])=>(i[o]||(i[o]=[]),i[o].push(r),i),{});return s`
+  `;let u=M;$([d()],u.prototype,"userid");$([d()],u.prototype,"loading");$([d()],u.prototype,"error");$([d()],u.prototype,"recipes");$([d()],u.prototype,"showAddForm");var fe=Object.defineProperty,be=Object.getOwnPropertyDescriptor,q=(a,r,e,i)=>{for(var t=i>1?void 0:i?be(r,e):r,o=a.length-1,n;o>=0;o--)(n=a[o])&&(t=(i?n(r,e,t):n(t))||t);return i&&t&&fe(r,e,t),t};const N=class N extends X{get profile(){return this.model.profile}render(){const e=[["Running","Cardiovascular Activity"],["Cycling","Cardiovascular Activity"],["Swimming","Cardiovascular Activity"],["Jump Rope","Cardiovascular Activity"],["Push-Ups","Strength Training"],["Squats","Strength Training"],["Deadlifts","Strength Training"],["Bench Press","Strength Training"]].reduce((i,[t,o])=>(i[o]||(i[o]=[]),i[o].push(t),i),{});return s`
       <back-button></back-button>
 
-      ${Object.entries(e).map(([i,r])=>s`
+      ${Object.entries(e).map(([i,t])=>s`
           <section class="category-group" data-category="${i}">
             <h2 class="category-title">${i}</h2>
             <div class="exercise-grid">
-              ${r.map(o=>s`
+              ${t.map(o=>s`
                   <div class="exercise-card" tabindex="0" role="button" aria-label="${o}, ${i}">
                     <div class="exercise-name">${o}</div>
                     <div class="exercise-category">${i}</div>
@@ -978,7 +1105,7 @@ health-planner-card {
             </div>
           </section>
         `)}
-    `}static get observedAttributes(){return["user-id"]}attributeChangedCallback(t,e,i){var r;(r=super.attributeChangedCallback)==null||r.call(this,t,e,i),t==="user-id"&&e!==i&&i&&this.dispatchMessage(["profile/select",{userid:i}])}};U.styles=c`
+    `}static get observedAttributes(){return["user-id"]}attributeChangedCallback(r,e,i){var t;(t=super.attributeChangedCallback)==null||t.call(this,r,e,i),r==="user-id"&&e!==i&&i&&this.dispatchMessage(["profile/select",{userid:i}])}};N.styles=c`
     :host {
       display: block;
       padding: 2rem;
@@ -1081,7 +1208,7 @@ health-planner-card {
         font-size: 1.25rem;
       }
     }
-  `;let v=U;J([y({attribute:"user-id"})],v.prototype,"userid",2);J([d()],v.prototype,"profile",1);const N=class N extends h{render(){return s`
+  `;let w=N;q([k({attribute:"user-id"})],w.prototype,"userid",2);q([d()],w.prototype,"profile",1);const B=class B extends h{render(){return s`
       <back-button></back-button>
 
       <main class="journal-content">
@@ -1093,7 +1220,7 @@ health-planner-card {
 Today I finally went for that run I kept putting off, and honestly, it felt way better than I expected. I didn’t go far, but the fresh air and movement did wonders for my mood—might actually make it a habit this time.</textarea
         >
       </main>
-    `}};N.styles=c`
+    `}};B.styles=c`
     :host {
       display: block;
       padding: 2rem;
@@ -1142,7 +1269,7 @@ Today I finally went for that run I kept putting off, and honestly, it felt way 
       color: #999;
       font-style: italic;
     }
-  `;let j=N;const fe={};function be(a,t,e){switch(a[0]){case"recipe/save":me(a[1],e).then(i=>t(r=>({...r,recipes:r.recipes?[...r.recipes,i]:[i]}))).then(()=>{const{onSuccess:i}=a[1];i&&i()}).catch(i=>{const{onFailure:r}=a[1];r&&r(i)});break;case"profile/select":ve(a[1].userid,e).then(i=>t(r=>({...r,profile:i.profile,recipes:i.recipes}))).catch(i=>console.error("Failed to load user data:",i));break;case"history/navigate":break;default:console.warn("Unhandled message:",a);break}}function me(a,t){return fetch(`/api/recipes/${a.userid}`,{method:"PUT",headers:{"Content-Type":"application/json",...k.headers(t)},body:JSON.stringify(a.recipe)}).then(e=>{if(e.status===200||e.status===201)return e.json();throw new Error(`Failed to save recipe for ${a.userid}: ${e.status}`)}).then(e=>e)}function ve(a,t){return Promise.all([fetch(`/api/profiles/${a}`,{headers:k.headers(t)}).then(e=>e.json()),fetch(`/api/recipes/${a}`,{method:"GET",headers:k.headers(t)}).then(e=>e.json())]).then(([e,i])=>({profile:e,recipes:Array.isArray(i)?i:[]}))}const xe=[{path:"/app",view:()=>s`
+  `;let O=B;const me={};function ve(a,r,e){switch(a[0]){case"recipe/save":xe(a[1],e).then(i=>r(t=>({...t,recipes:t.recipes?[...t.recipes,i]:[i]}))).then(()=>{const{onSuccess:i}=a[1];i&&i()}).catch(i=>{const{onFailure:t}=a[1];t&&t(i)});break;case"profile/select":ye(a[1].userid,e).then(i=>r(t=>({...t,profile:i.profile,recipes:i.recipes}))).catch(i=>console.error("Failed to load user data:",i));break;case"history/navigate":break;default:console.warn("Unhandled message:",a);break}}function xe(a,r){return fetch(`/api/recipes/${a.userid}`,{method:"PUT",headers:{"Content-Type":"application/json",...z.headers(r)},body:JSON.stringify(a.recipe)}).then(e=>{if(e.status===200||e.status===201)return e.json();throw new Error(`Failed to save recipe for ${a.userid}: ${e.status}`)}).then(e=>e)}function ye(a,r){return Promise.all([fetch(`/api/profiles/${a}`,{headers:z.headers(r)}).then(e=>e.json()),fetch(`/api/recipes/${a}`,{method:"GET",headers:z.headers(r)}).then(e=>e.json())]).then(([e,i])=>({profile:e,recipes:Array.isArray(i)?i:[]}))}const we=[{path:"/app",view:()=>s`
       <home-view></home-view>
     `},{path:"/app/mealplan/:id",view:a=>s`
       <mealplan-view user-id=${a.id}></mealplan-view>
@@ -1153,4 +1280,4 @@ Today I finally went for that run I kept putting off, and honestly, it felt way 
       <exerciseoptions-view user-id=${a.id}></exerciseoptions-view>
     `},{path:"/app/journaling/:id",view:a=>s`
       <journaling-view user-id=${a.id}></journaling-view>
-    `},{path:"/",redirect:"/app"}];Q({"mu-store":class extends Z.Provider{constructor(){super(be,fe,"profile:auth")}},"mu-auth":k.Provider,"mu-history":L.Provider,"profile-header":f,"home-view":b,"mealplan-view":S,"workout-schedule-view":g,"recipes-view":p,"exerciseoptions-view":v,"journaling-view":j,"mu-switch":class extends X.Element{constructor(){super(xe,"profile:history","profile:auth")}}});
+    `},{path:"/",redirect:"/app"}];Z({"mu-store":class extends V.Provider{constructor(){super(ve,me,"profile:auth")}},"mu-auth":z.Provider,"mu-history":L.Provider,"profile-header":v,"home-view":x,"mealplan-view":p,"workout-schedule-view":g,"recipes-view":u,"exerciseoptions-view":w,"journaling-view":O,"mu-switch":class extends H.Element{constructor(){super(we,"profile:history","profile:auth")}}});

@@ -15,7 +15,6 @@
     --size-type-table-small : 1rem;
     --size-type-mlarge: 1.25rem;
     --size-type-large: 1.5rem;
-    --size-type-large-hover: 1.4rem;
     --size-type-xlarge: 2rem;
     --size-type-xxlarge: 2.5rem;
   
@@ -51,7 +50,7 @@
     --bright-red :rgb(174, 10, 10);
 
     --color-background-header: rgb(254, 254, 254);
-    --light-pink :  rgb(248, 232, 243);
+    --light-pink :  rgb(255, 228, 247);
     --color-background-page: rgb(255, 247, 243);
 
     --color-text: rgb(51 51 51);
