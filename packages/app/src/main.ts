@@ -5,7 +5,7 @@ import{ HomeViewElement } from "./views/home-view.ts";
 import { MealplanViewElement } from "./views/mealplan-view.ts";
 import { WorkoutScheduleViewElement } from "./views/workoutschedule-view.ts";
 import{RecipeListViewElement} from "./views/recipelist-view.ts";
-import { ExerciseOptionsViewElement } from "./views/exerciseoptions-view.ts";
+import { ExerciseOptionListViewElement } from "./views/exerciseoptions-view.ts";
 import {JournalViewElement} from "./views/journal-view.ts";
 import { Msg } from "./messages.ts";
 import { Model, init } from "./model.ts";
@@ -73,7 +73,7 @@ define({
   "mealplan-view": MealplanViewElement,
   "workout-schedule-view": WorkoutScheduleViewElement,
   "recipes-view": RecipeListViewElement,
-  "exerciseoptions-view": ExerciseOptionsViewElement,
+  "exerciseoptions-view": ExerciseOptionListViewElement,
   "journaling-view": JournalViewElement,
   
 

@@ -11,6 +11,7 @@ import path from "path";
 import credentialSvc, { credentialModel } from "./services/credential-svc";
 import recipeRoutes from "./routes/recipes";
 import mealplanRoutes from './routes/mealplans';
+import exerciseRoutes from './routes/exerciseoptions';
 
 connect("healthdb"); 
 
@@ -26,6 +27,7 @@ app.use("/api/workoutEntries", workoutEntries);
 app.use("/api/recipes", recipeRoutes);
 //app.use("/api/Persons",  authenticateUser, Persons);
 app.use('/api/mealplans', mealplanRoutes);
+app.use('/api/exerciseoptions', exerciseRoutes);
 
 //
 

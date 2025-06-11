@@ -1,175 +1,249 @@
-import { html, css } from "lit";
-import { View } from "@calpoly/mustang";
-import { Person } from "server/models";
-import { Msg } from "../messages";
-import { Model } from "../model";
-import { state, property } from "lit/decorators.js";
+import { html, LitElement, css } from "lit";
+import { state } from "lit/decorators.js";
+import { Observer, Auth } from "@calpoly/mustang";
 import "../components/backbutton";
+import "../components/exercise-edit";
+import mongoose from "mongoose";
 
-export class ExerciseOptionsViewElement extends View<Model, Msg> {
-  @property({ attribute: "user-id" })
-  userid?: string;
 
-  @state()
-  get profile(): Person | undefined {
-    return this.model.profile;
+ interface ExerciseOption{
+  userid: mongoose.Types.ObjectId;
+  type: string;
+  activity: string;
+}
+
+export class ExerciseOptionListViewElement extends LitElement {
+  @state() userid?: string;
+  @state() loading = true;
+  @state() error: string | null = null;
+  @state() exerciseoptions: ExerciseOption[] = [];
+  @state() showAddForm = false;
+
+  private _authObserver = new Observer<Auth.Model>(this, "profile:auth");
+
+  private groupedByType(): Record<string, ExerciseOption[]> {
+  const grouped: Record<string, ExerciseOption[]> = {};
+  for (const option of this.exerciseoptions) {
+    if (!grouped[option.type]) {
+      grouped[option.type] = [];
+    }
+    grouped[option.type].push(option);
+  }
+  return grouped;
+}
+
+
+  connectedCallback() {
+    super.connectedCallback();
+
+    this._authObserver.observe((auth: Auth.Model) => {
+      const { user } = auth;
+
+      if (user?.authenticated) {
+        this.fetchUserObjectId(user.username);
+      } else {
+        this.userid = undefined;
+        this.loading = false;
+        this.error = "User not authenticated";
+      }
+    });
+
+    // Listen for custom events from recipe-edit component
+    this.addEventListener('exercise-saved', this.handleExerciseSaved as EventListener);
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.removeEventListener('exercise-saved', this.handleExerciseSaved as EventListener);
+  }
+
+  async fetchUserObjectId(username: string) {
+    try {
+      const res = await fetch(`/api/user/${username}`, {
+        credentials: "include",
+        headers: { "Content-Type": "application/json" }
+      });
+
+      if (!res.ok) throw new Error(`User fetch failed`);
+
+      const data = await res.json();
+      this.userid = data._id?.$oid || data._id;
+
+      
+      if (this.userid) {
+        this.fetchExercises(this.userid);
+      }
+    } catch (err) {
+      this.error = err instanceof Error ? err.message : "Failed to fetch user";
+      this.loading = false;
+    }
+  }
+
+  async fetchExercises(userid: string) {
+    this.loading = true;
+    try {
+      const res = await fetch(`/api/exerciseoptions/${userid}`);
+      if (!res.ok) throw new Error("Failed to load exercises");
+
+      const data = await res.json();
+      this.exerciseoptions = data;
+      this.loading = false;
+    } catch (err) {
+      this.error = err instanceof Error ? err.message : "Error loading exercises";
+      this.loading = false;
+    }
+  }
+
+  // Method to refresh recipes - can be called externally
+  async refreshExercises() {
+    if (this.userid) {
+      await this.fetchExercises(this.userid);
+    }
+  }
+
+  // Handle the custom event when a recipe is saved
+  handleExerciseSaved = () => {
+    console.log('Exercise saved, refreshing list...');
+    this.showAddForm = false; // Close the form after saving
+    this.refreshExercises();
+  }
+
+  toggleAddForm() {
+    this.showAddForm = !this.showAddForm;
   }
 
   static styles = css`
-    :host {
-      display: block;
-      padding: 2rem;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #f8f0f8, #fffafa);
-      color: #333;
-      min-height: 100vh;
+    .page {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
     }
 
-    back-button {
-      display: block;
+    .recipe {
       margin-bottom: 2rem;
+      background: var(--color-surface);
+      padding: 1.5rem;
+      border-radius: var(--size-radius-medium);
+      box-shadow: var(--shadow-sm);
     }
 
-    h2.category-title {
-      font-weight: 700;
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: #aa1f1f;
-      border-bottom: 3px solid #aa1f1f;
-      padding-bottom: 0.25rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+    .recipe ul {
+      padding-left: 1.5rem;
     }
 
-    section.category-group {
-      margin-bottom: 3rem;
+    .error,
+    .loading,
+    .empty {
+      text-align: center;
+      padding: 1rem;
     }
 
-    .exercise-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem;
+    .controls {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
     }
 
-    .exercise-card {
-      background: #fff;
-      border-radius: 1rem;
-      padding: 1.5rem 1.75rem;
-      box-shadow: 0 4px 10px rgba(170, 31, 31, 0.1);
-      border: 2px solid transparent;
-      transition: 
-        transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-        box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-        border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    .add-recipe-button {
+      padding: 0.75rem 1.5rem;
+      background: var(--bright-red);
+      color: white;
+      border: none;
+      border-radius: var(--size-radius-small, 4px);
       cursor: pointer;
-    }
-
-    .exercise-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 15px 30px rgba(170, 31, 31, 0.3);
-      border-color: #aa1f1f;
-    }
-
-    .exercise-name {
-      font-size: 1.25rem;
-      font-weight: 700;
-      margin-bottom: 0.4rem;
-      color: #aa1f1f;
-      letter-spacing: 0.02em;
-    }
-
-    .exercise-category {
       font-size: 1rem;
-      font-weight: 600;
-      color: #666;
+      font-weight: bold;
+      transition: all  ease-in-out 0.2s;
+    }
+
+    .add-recipe-button:hover {
+      transform: scale(1.04);
+      background: #c82333;
+    }
+
+    .add-recipe-button.active {
+      background: #dc3545;
+    }
+
+    .add-recipe-button.active:hover {
+      background: #c82333;
+    }
+
+    .refresh-button {
+      padding: 0.75rem 1.5rem;
+      background: var(--color-accent,rgb(88, 93, 99));
+      color: white;
+      border: none;
+      border-radius: var(--size-radius-small, 4px);
+      cursor: pointer;
+      font-size: 1rem;
+      transition: opacity 0.2s;
+    }
+
+    .refresh-button:hover {
       opacity: 0.8;
     }
 
-    /* Accent colors for different categories */
-    section.category-group[data-category="Cardiovascular Activity"] .exercise-card {
-      border-color: #e76f51;
-      box-shadow: 0 4px 10px rgba(231, 111, 81, 0.1);
-    }
-    section.category-group[data-category="Cardiovascular Activity"] .exercise-card:hover {
-      box-shadow: 0 15px 30px rgba(231, 111, 81, 0.3);
-      border-color: #e76f51;
+    .add-form-container {
+      margin-bottom: 2rem;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
     }
 
-    section.category-group[data-category="Strength Training"] .exercise-card {
-      border-color: #264653;
-      box-shadow: 0 4px 10px rgba(38, 70, 83, 0.1);
-    }
-    section.category-group[data-category="Strength Training"] .exercise-card:hover {
-      box-shadow: 0 15px 30px rgba(38, 70, 83, 0.3);
-      border-color: #264653;
+    .add-form-container.hidden {
+      max-height: 0;
+      margin-bottom: 0;
     }
 
-    @media (max-width: 600px) {
-      :host {
-        padding: 1rem;
-      }
-      .exercise-card {
-        padding: 1rem 1.25rem;
-      }
-      .exercise-name {
-        font-size: 1.1rem;
-      }
-      h2.category-title {
-        font-size: 1.25rem;
-      }
+    .add-form-container.visible {
+      max-height: 1000px;
     }
   `;
 
   render() {
-    const exercises = [
-      ["Running", "Cardiovascular Activity"],
-      ["Cycling", "Cardiovascular Activity"],
-      ["Swimming", "Cardiovascular Activity"],
-      ["Jump Rope", "Cardiovascular Activity"],
-      ["Push-Ups", "Strength Training"],
-      ["Squats", "Strength Training"],
-      ["Deadlifts", "Strength Training"],
-      ["Bench Press", "Strength Training"],
-    ];
-
-    // Group exercises by category
-    const grouped = exercises.reduce((acc, [name, category]) => {
-      if (!acc[category]) acc[category] = [];
-      acc[category].push(name);
-      return acc;
-    }, {} as Record<string, string[]>);
-
     return html`
       <back-button></back-button>
+      <main class="page">
+        ${this.userid ? html`
+          <div class="controls">
+            <button 
+              class="add-recipe-button ${this.showAddForm ? 'active' : ''}" 
+              @click=${this.toggleAddForm}
+            >
+              ${this.showAddForm ? '✕ Cancel' : '+ Add New Exercise'}
+            </button>
+            <button class="refresh-button" @click=${this.refreshExercises}>
+             Refresh
+            </button>
+          </div>
 
-      ${Object.entries(grouped).map(
-        ([category, names]) => html`
-          <section class="category-group" data-category="${category}">
-            <h2 class="category-title">${category}</h2>
-            <div class="exercise-grid">
-              ${names.map(
-                (name) => html`
-                  <div class="exercise-card" tabindex="0" role="button" aria-label="${name}, ${category}">
-                    <div class="exercise-name">${name}</div>
-                    <div class="exercise-category">${category}</div>
-                  </div>
-                `
-              )}
-            </div>
-          </section>
-        `
+          <div class="add-form-container ${this.showAddForm ? 'visible' : 'hidden'}">
+            <exercise-edit userid=${this.userid}></exercise-edit>
+          </div>
+        ` : ''}
+        
+        ${this.loading
+          ? html`<div class="loading">Loading exercises...</div>`
+          : this.error
+          ? html`<div class="error">Error: ${this.error}</div>`
+          : !this.userid
+          ? html`<div class="error">No user ID available</div>`
+          : this.exerciseoptions.length === 0
+          ? html`<div class="empty">No recipes found. Click "Add New Exercse" to get started!</div>`
+          : Object.entries(this.groupedByType()).map(
+          ([type, activities]) => html`
+            <section class="recipe">
+              <h2>${type}</h2>
+              <ul>
+                ${activities.map(
+                  (ex) => html`<li>${ex.activity}</li>`
+                )}
+              </ul>
+            </section>
+          `
       )}
+      </main>
     `;
-  }
-
-  static get observedAttributes() {
-    return ["user-id"];
-  }
-
-  attributeChangedCallback(name: string, oldValue: string, newValue: string) {
-    super.attributeChangedCallback?.(name, oldValue, newValue);
-    if (name === "user-id" && oldValue !== newValue && newValue) {
-      this.dispatchMessage(["profile/select", { userid: newValue }]);
-    }
   }
 }
