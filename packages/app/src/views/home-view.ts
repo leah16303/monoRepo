@@ -34,17 +34,14 @@ export class HomeViewElement extends LitElement {
 
 
 health-planner-card {
-  margin-left: -6%;
   grid-column: span 4; /* each card takes up 4 of 12 columns */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 1rem;
+  padding: 1.5rem;
   border-radius: var(--size-radius-medium);
+   height: 100%; /* 👈 Fill the grid row height */
   transition: transform 0.2s ease;
-  background-color: #FFFFFF;
-  background:#FFFFFF;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 
@@ -129,8 +126,8 @@ health-planner-card {
     .card-link {
      height: 30%; 
       display: inline-block;
-      background: #DCFCE7; /* Default green - for Mental Health */
-      color: var(--color-text);
+      background: linear-gradient(135deg, var(--dark-red) 0%, var(--bright-red) 100%);
+      color: white;
       padding: var(--size-spacing-large) var(--size-spacing-xlarge);
       border-radius: var(--size-radius-medium);
       text-decoration: none;
@@ -143,84 +140,29 @@ health-planner-card {
       overflow: hidden;
     }
 
-    /* Food category links - Pink */
-    .card-link-food {
-      height: 30%; 
-      display: inline-block;
-      background: #FFE2E5;
-      color: var(--color-text);
-      padding: var(--size-spacing-large) var(--size-spacing-xlarge);
-      border-radius: var(--size-radius-medium);
-      text-decoration: none;
-      font-family: var(--font-family-display);
-      font-size: var(--size-type-large);
-      font-weight: var(--font-display-bold);
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(115, 6, 12, 0.3);
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Fitness category links - Yellow */
-    .card-link-fitness {
-      height: 30%; 
-      display: inline-block;
-      background: #FFF4DE;
-      color: var(--color-text);
-      padding: var(--size-spacing-large) var(--size-spacing-xlarge);
-      border-radius: var(--size-radius-medium);
-      text-decoration: none;
-      font-family: var(--font-family-display);
-      font-size: var(--size-type-large);
-      font-weight: var(--font-display-bold);
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(115, 6, 12, 0.3);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .card-link::before,
-    .card-link-food::before,
-    .card-link-fitness::before {
+    .card-link::before {
       content: '';
       position: absolute;
       top: 0;
       left: -100%;
       width: 100%;
       height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
       transition: left 0.5s;
     }
 
-    .card-link:hover,
-    .card-link-food:hover,
-    .card-link-fitness:hover {
-      box-shadow: 0 8px 25px rgba(115, 6, 12, 0.4);
-      color: var(--color-text);
-      font-size: var(--size-type-large-hover);
-    }
-
-    /* Specific hover effects for each category */
     .card-link:hover {
-      background: linear-gradient(135deg,rgb(247, 253, 249) 0%, #DCFCE7 80%);
+      box-shadow: 0 8px 25px rgba(115, 6, 12, 0.4);
+      background: linear-gradient(135deg, var(--bright-red) 0%, var(--dark-red) 100%);
+      color: var(--color-text);
+      font-size: 1.1rem;
     }
 
-    .card-link-food:hover {
-      background: linear-gradient(135deg, #FFFFFF 0%, #FFE2E5);
-    }
-
-    .card-link-fitness:hover {
-      background: linear-gradient(135deg, #FFFFFF 0%, #FFF4DE);
-    }
-
-    .card-link:hover::before,
-    .card-link-food:hover::before,
-    .card-link-fitness:hover::before {
+    .card-link:hover::before {
       left: 100%;
     }
 
-    .card-link:active,
-    .card-link-food:active,
-    .card-link-fitness:active {
+    .card-link:active {
       transform: translateY(0);
     }
 
@@ -333,22 +275,22 @@ health-planner-card {
     return html`
       <main class="main-grid">
         <health-planner-card class="card" category="Food">
-          <a slot="link-1" class="card-link-food" href="/app/mealplan/${this.userid}">
+          <a slot="link-1" class="card-link" href="/app/mealplan/${this.userid}">
             <svg class="icon"><use href="/icons/food.svg#mealplan" /></svg>
             Meal Plan
           </a>
-          <a slot="link-2" class="card-link-food" href="/app/recipes/${this.userid}">
+          <a slot="link-2" class="card-link" href="/app/recipes/${this.userid}">
             <svg class="icon"><use href="/icons/food.svg#pot" /></svg>
             Recipes
           </a>
         </health-planner-card>
 
         <health-planner-card class="card" category="Fitness">
-          <a slot="link-1" class="card-link-fitness" href="/app/workoutcalendar">
+          <a slot="link-1" class="card-link" href="/app/workoutcalendar">
             <svg class="icon"><use href="/icons/fitness.svg#calendar" /></svg>
             Workout Calendar
           </a>
-          <a slot="link-2" class="card-link-fitness" href="/app/exerciseoptions/${this.userid}">
+          <a slot="link-2" class="card-link" href="/app/exerciseoptions/${this.userid}">
             <svg class="icon"><use href="/icons/fitness.svg#weight" /></svg>
             Exercise Options
           </a>
