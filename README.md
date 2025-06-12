@@ -7,5 +7,12 @@
 *username=* joe
 *pwd=*123
 
-All components of my website are dynamic, that being said, the journal commponenet is not dynamic in realation to a user compared to the other components that will switch the data based on the userid
- 
+My project runs using screen. To start:
+SSH into the VPS
+Run cd ~/project/app && npm run build
+Run cd ~/project/server && screen -S finalproject
+Inside screen, run: npm run start:app
+Detach from screen with Ctrl+A D.
+
+
+All components of my website are dynamic, that being said, the journal commponenet is not dynamic in relation to the user compared to the other components that will switch the data based on the userid/credentials
