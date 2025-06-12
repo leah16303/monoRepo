@@ -16,3 +16,5 @@ Detach from screen with Ctrl+A D.
 
 
 All components of my website are dynamic, that being said, the journal commponenet is not dynamic in relation to the user compared to the other components that will switch the data based on the userid/credentials
+
+I unfortunately did not get the dark mode to work after going from proto to a SPA.
