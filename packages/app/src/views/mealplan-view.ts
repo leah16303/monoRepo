@@ -184,118 +184,134 @@ export class MealplanViewElement extends LitElement {
   }
 
   static styles = css`
-    .table-wrapper {
-      overflow-x: auto;
-      margin: 1rem 0;
-      max-width: 100%;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      border-radius: 8px;
-      background: white;
-      
-    }
+  :host {
+    display: block;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
 
-    table {
-      border-collapse: collapse;
-      width: 100%;
-      font-family: Arial, sans-serif;
-    }
+  .main-content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    max-width: 100%;
+  }
 
-    thead {
-      background-color: #333;
-      color: white;
-    }
+  .table-wrapper {
+    width: 100%;
+    max-width: 900px;
+    overflow-x: auto;
+    margin: 1rem auto;
+    border-radius: 8px;
+    background: white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
 
-    th, td {
-      border: 1px solid #ddd;
-      padding: 0.5rem 1rem;
-      text-align: left;
-      position: relative;
-    }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+  }
 
-    tbody tr:nth-child(even) {
-      background-color: #f9f9f9;
-    }
+  th,
+  td {
+    border: 1px solid #ddd;
+    padding: 0.75rem 1rem;
+    text-align: left;
+  }
 
-    tbody tr:hover {
-      background-color: #f1f1f1;
-    }
+  thead {
+    background-color: var(--color-background-header);
+    color: var(--dark-red);
+  }
 
-    .editable-cell {
-      cursor: pointer;
-      display: block;
-      min-height: 1.2em;
-      padding: 0.25rem;
-      border-radius: 4px;
-      transition: background-color 0.2s;
-    }
+  tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
 
-    .editable-cell:hover {
-      background-color: rgba(0, 123, 255, 0.1);
-    }
+  tbody tr:hover {
+    background-color: #f1f1f1;
+  }
 
-    .placeholder {
-      color: #999;
-      font-style: italic;
-    }
+  .editable-cell {
+    cursor: pointer;
+    display: block;
+    min-height: 1.2em;
+    padding: 0.25rem;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+  }
 
-    .edit-input {
-      width: 100%;
-      border: 2px solid #007bff;
-      border-radius: 4px;
-      padding: 0.25rem;
-      font-size: inherit;
-      font-family: inherit;
-    }
+  .editable-cell:hover {
+    background-color: rgba(0, 123, 255, 0.1);
+  }
 
-    .edit-input:focus {
-      outline: none;
-      border-color: #0056b3;
-    }
+  .placeholder {
+    color: #999;
+    font-style: italic;
+  }
 
-    .loading, .error {
-      text-align: center;
-      padding: 2rem;
-      margin: 1rem 0;
-    }
+  .edit-input {
+    width: 100%;
+    border: 2px solid #007bff;
+    border-radius: 4px;
+    padding: 0.25rem;
+    font-size: inherit;
+    font-family: inherit;
+  }
 
-    .error {
-      color: #dc3545;
-      background-color: #f8d7da;
-      border: 1px solid #f5c6cb;
-      border-radius: 4px;
-    }
+  .edit-input:focus {
+    outline: none;
+    border-color: #0056b3;
+  }
 
-    .loading {
-      color: #6c757d;
-    }
+  .loading,
+  .error {
+    text-align: center;
+    padding: 2rem;
+    margin: 1rem 0;
+  }
 
-    .controls {
-      margin-bottom: 1rem;
-    }
+  .error {
+    color: #dc3545;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+  }
 
-    .refresh-button {
-      padding: 0.5rem 1rem;
-      background: var(--color-accent, #6c757d);
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 0.9rem;
-    }
+  .loading {
+    color: #6c757d;
+  }
 
-    .refresh-button:hover {
-      opacity: 0.8;
-    }
+  .controls {
+    margin-bottom: 1rem;
+  }
 
-    .instructions {
-      background-color: #FFF4DE;
-      padding: 1rem;
-      border-radius: 4px;
-      margin-bottom: 1rem;
-      font-size: 0.9rem;
-      color: #495057;
-    }
-  `;
+  .refresh-button {
+    padding: 0.5rem 1rem;
+    background: var(--color-accent, #6c757d);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+  }
+
+  .refresh-button:hover {
+    opacity: 0.8;
+  }
+
+  .instructions {
+    background-color: #fff4de;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: #495057;
+  }
+`;
+
 
   render() {
     if (this.loading) {

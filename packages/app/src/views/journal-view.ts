@@ -1,7 +1,11 @@
 import { LitElement, html, css } from "lit";
+import { state } from "lit/decorators.js";
 import "../components/backbutton";
 
 export class JournalViewElement extends LitElement {
+  @state()
+  entry = "";
+
   static styles = css`
     :host {
       display: block;
@@ -51,7 +55,31 @@ export class JournalViewElement extends LitElement {
       color: #999;
       font-style: italic;
     }
+
+    button.save-button {
+      margin-top: 1rem;
+      background-color: #aa1f1f;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 0.5rem 1.25rem;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    button.save-button:hover {
+      background-color: #8b1717;
+    }
   `;
+
+  connectedCallback() {
+    super.connectedCallback();
+    // Load saved entry from localStorage (or fetch from API)
+    const saved = localStorage.getItem("journalEntry");
+    if (saved) {
+      this.entry = saved;
+    }
+  }
 
   render() {
     return html`
@@ -62,10 +90,20 @@ export class JournalViewElement extends LitElement {
           class="journal-input"
           placeholder="Write your journal entry here..."
           aria-label="Journal Entry"
-        >
-Today I finally went for that run I kept putting off, and honestly, it felt way better than I expected. I didn’t go far, but the fresh air and movement did wonders for my mood—might actually make it a habit this time.</textarea
-        >
+          @input=${this.handleInput}
+        >${this.entry}</textarea>
+        <button class="save-button" @click=${this.saveEntry}>Save</button>
       </main>
     `;
+  }
+
+  handleInput(e: Event) {
+    const target = e.target as HTMLTextAreaElement;
+    this.entry = target.value;
+  }
+
+  saveEntry() {
+    localStorage.setItem("journalEntry", this.entry);
+    alert("Journal entry saved!");
   }
 }

@@ -79,6 +79,15 @@ export class WorkoutScheduleViewElement extends LitElement {
     .error {
       color: var(--color-error, #d32f2f);
     }
+
+    .instructions {
+      background-color: #FFF4DE;
+      padding: 1rem;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+      color: #495057;
+    }
   `;
 
   render() {
@@ -86,6 +95,9 @@ export class WorkoutScheduleViewElement extends LitElement {
     
     return html`
       <back-button></back-button>
+      <div class="instructions">
+       Click on any cell to edit your Calendar. Press Enter to save or Escape to cancel.
+      </div>
       ${this.loading 
         ? html`<div class="loading">
         <p>Log in to start adding items to your schedule</p>

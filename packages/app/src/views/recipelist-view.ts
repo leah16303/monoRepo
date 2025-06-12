@@ -5,7 +5,6 @@ import "../components/backbutton";
 import "../components/recipe-edit";
 import mongoose from "mongoose";
 
-
 interface Recipe {
   userid: mongoose.Types.ObjectId;
   title: string;
@@ -37,13 +36,12 @@ export class RecipeListViewElement extends LitElement {
       }
     });
 
-    // Listen for custom events from recipe-edit component
-    this.addEventListener('recipe-saved', this.handleRecipeSaved as EventListener);
+    this.addEventListener("recipe-saved", this.handleRecipeSaved as EventListener);
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
-    this.removeEventListener('recipe-saved', this.handleRecipeSaved as EventListener);
+    this.removeEventListener("recipe-saved", this.handleRecipeSaved as EventListener);
   }
 
   async fetchUserObjectId(username: string) {
@@ -58,7 +56,6 @@ export class RecipeListViewElement extends LitElement {
       const data = await res.json();
       this.userid = data._id?.$oid || data._id;
 
-      
       if (this.userid) {
         this.fetchRecipes(this.userid);
       }
@@ -83,19 +80,17 @@ export class RecipeListViewElement extends LitElement {
     }
   }
 
-  // Method to refresh recipes - can be called externally
   async refreshRecipes() {
     if (this.userid) {
       await this.fetchRecipes(this.userid);
     }
   }
 
-  // Handle the custom event when a recipe is saved
   handleRecipeSaved = () => {
-    console.log('Recipe saved, refreshing list...');
-    this.showAddForm = false; // Close the form after saving
+    console.log("Recipe saved, refreshing list...");
+    this.showAddForm = false;
     this.refreshRecipes();
-  }
+  };
 
   toggleAddForm() {
     this.showAddForm = !this.showAddForm;
@@ -103,28 +98,9 @@ export class RecipeListViewElement extends LitElement {
 
   static styles = css`
     .page {
-      max-width: 800px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 2rem 1rem;
-    }
-
-    .recipe {
-      margin-bottom: 2rem;
-      background: var(--color-surface);
-      padding: 1.5rem;
-      border-radius: var(--size-radius-medium);
-      box-shadow: var(--shadow-sm);
-    }
-
-    .recipe ul {
-      padding-left: 1.5rem;
-    }
-
-    .error,
-    .loading,
-    .empty {
-      text-align: center;
-      padding: 1rem;
     }
 
     .controls {
@@ -143,7 +119,7 @@ export class RecipeListViewElement extends LitElement {
       cursor: pointer;
       font-size: 1rem;
       font-weight: bold;
-      transition: all  ease-in-out 0.2s;
+      transition: all ease-in-out 0.2s;
     }
 
     .add-recipe-button:hover {
@@ -161,7 +137,7 @@ export class RecipeListViewElement extends LitElement {
 
     .refresh-button {
       padding: 0.75rem 1.5rem;
-      background: var(--color-accent,rgb(88, 93, 99));
+      background: var(--color-accent, rgb(88, 93, 99));
       color: white;
       border: none;
       border-radius: var(--size-radius-small, 4px);
@@ -188,30 +164,75 @@ export class RecipeListViewElement extends LitElement {
     .add-form-container.visible {
       max-height: 1000px;
     }
+
+    .recipe-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+    }
+
+    .recipe {
+      flex: 1 1 calc(33% - 1.5rem);
+      max-width: calc(33% - 1.5rem);
+      min-width: 280px;
+      background: var(--color-surface);
+      padding: 1.5rem;
+      border-radius: var(--size-radius-medium);
+      box-shadow: var(--shadow-sm);
+      background-color: #f9f9f9;
+    }
+
+    @media (max-width: 900px) {
+      .recipe {
+        flex: 1 1 calc(50% - 1rem);
+        max-width: calc(50% - 1rem);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .recipe {
+        flex: 1 1 100%;
+        max-width: 100%;
+      }
+    }
+
+    .recipe ul {
+      padding-left: 1.5rem;
+    }
+
+    .error,
+    .loading,
+    .empty {
+      text-align: center;
+      padding: 1rem;
+    }
   `;
 
   render() {
     return html`
       <back-button></back-button>
       <main class="page">
-        ${this.userid ? html`
-          <div class="controls">
-            <button 
-              class="add-recipe-button ${this.showAddForm ? 'active' : ''}" 
-              @click=${this.toggleAddForm}
-            >
-              ${this.showAddForm ? '✕ Cancel' : '+ Add New Recipe'}
-            </button>
-            <button class="refresh-button" @click=${this.refreshRecipes}>
-             Refresh
-            </button>
-          </div>
+        ${this.userid
+          ? html`
+              <div class="controls">
+                <button
+                  class="add-recipe-button ${this.showAddForm ? "active" : ""}"
+                  @click=${this.toggleAddForm}
+                >
+                  ${this.showAddForm ? "✕ Cancel" : "+ Add New Recipe"}
+                </button>
+                <button class="refresh-button" @click=${this.refreshRecipes}>
+                  Refresh
+                </button>
+              </div>
 
-          <div class="add-form-container ${this.showAddForm ? 'visible' : 'hidden'}">
-            <recipe-edit userid=${this.userid}></recipe-edit>
-          </div>
-        ` : ''}
-        
+              <div class="add-form-container ${this.showAddForm ? "visible" : "hidden"}">
+                <recipe-edit userid=${this.userid}></recipe-edit>
+              </div>
+            `
+          : ""}
+
         ${this.loading
           ? html`<div class="loading">Loading recipes...</div>`
           : this.error
@@ -220,18 +241,22 @@ export class RecipeListViewElement extends LitElement {
           ? html`<div class="error">No user ID available</div>`
           : this.recipes.length === 0
           ? html`<div class="empty">No recipes found. Click "Add New Recipe" to get started!</div>`
-          : this.recipes.map(
-              (recipe) => html`
-                <section class="recipe">
-                  <h3>${recipe.title}</h3>
-                  <p><strong>Ingredients:</strong></p>
-                  <ul>
-                    ${recipe.ingredients.map((item) => html`<li>${item}</li>`)}
-                  </ul>
-                  <p><strong>Instructions:</strong> ${recipe.instructions}</p>
-                </section>
-              `
-            )}
+          : html`
+              <div class="recipe-list">
+                ${this.recipes.map(
+                  (recipe) => html`
+                    <section class="recipe">
+                      <h3>${recipe.title}</h3>
+                      <p><strong>Ingredients:</strong></p>
+                      <ul>
+                        ${recipe.ingredients.map((item) => html`<li>${item}</li>`)}
+                      </ul>
+                      <p><strong>Instructions:</strong> ${recipe.instructions}</p>
+                    </section>
+                  `
+                )}
+              </div>
+            `}
       </main>
     `;
   }
